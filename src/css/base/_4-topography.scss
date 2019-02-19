@@ -1,0 +1,22 @@
+.heading-primary,
+.heading-secondary,
+.heading-third {
+	font-weight: 700;
+	font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.heading-primary {
+	font-size: 2.2rem;
+}
+
+.heading-secondary,
+.heading-third {
+	font-size: 1.75rem;
+}
+
+.heading-secondary {
+	&--big {
+		font-size: 3rem;
+		text-transform: uppercase;
+	}
+}

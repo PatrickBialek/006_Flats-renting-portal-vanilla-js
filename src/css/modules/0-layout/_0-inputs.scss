@@ -1,0 +1,28 @@
+.select {
+	padding: 2rem 3rem;
+	height: 36px;
+	border: none;
+	font-size: 1.75rem;
+	outline: none;
+	opacity: .85;
+
+	&--bigger {
+		width: 246.5px;
+	}
+
+	&--smaller {
+		width: 180px;
+	}
+}
+
+@media (max-width: 880px) {
+	.select {
+		&--bigger {
+			width: 100%;
+		}
+
+		&--smaller {
+			width: 100%;
+		}
+	}
+}

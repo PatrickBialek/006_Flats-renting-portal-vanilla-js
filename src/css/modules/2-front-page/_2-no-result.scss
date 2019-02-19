@@ -1,0 +1,30 @@
+.no-result {
+	background-color: $light-grey;
+	min-height: 40vh;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	padding: 3rem 0.5rem;
+	background-color: $red;
+	border-radius: 4px;
+	color: $white;
+	width: 80%;
+	max-width: 700px;
+	margin: 3rem 0rem;
+
+	&__title {
+		font-size: 2rem;
+		text-transform: uppercase;
+	}
+
+	&__description {
+		font-size: 1.6rem;
+	}
+}
+
+@media (max-width: 880px) {
+	.no-result {
+		margin: 1rem;
+		padding: 2rem 0.5rem;
+	}
+}

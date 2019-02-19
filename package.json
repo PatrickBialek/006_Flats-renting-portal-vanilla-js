@@ -1,0 +1,17 @@
+{
+  "name": "rent-flat-portal",
+  "version": "1.0.0",
+  "description": "A portal for rent a flat",
+  "main": "index.js",
+  "scripts": {
+    "compile:css": "node-sass src/css/style.scss dist/style.css -w",
+    "compile:js": "webpack --mode development"
+  },
+  "author": "Patryk Białek",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.11.0",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3"
+  }
+}

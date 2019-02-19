@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Find a car with chosen parametrs</title>
+	<link rel="stylesheet" href="dist/style.css">
+	<script defer src="dist/bundle.js"></script>
+	<link rel="icon" href="images/bar-icon.png">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+</head>
+
+<body>
+
+	<header class="header">
+		<div class="header__container">
+			<h1 class="heading-primary">Home zone</span>
+		</div>
+		<nav class="header__nav">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="#">MyAccount</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="main">
+		<section class="search">
+			<h2 class="heading-secondary heading-secondary--big margin-bottom-big">Find a flat for rent!</h2>
+			<form class="search__form">
+				<div class="search__row">
+					<div class="search__box">
+						<label class="search__label" for="city">City</label>
+						<select class="select select--smaller" id="city">
+							<option value="">Select</option>
+							<option value="Aberdeen">Aberdeen</option>
+							<option value="Birmingham">Birmingham</option>
+							<option value="Cardiff">Cardiff</option>
+							<option value="Derby">Derby</option>
+							<option value="Glasgow">Glasgow</option>
+							<option value="Leeds">Leeds</option>
+							<option value="Liverpool">Liverpool</option>
+							<option value="London">London</option>
+							<option value="Manchester">Manchester</option>
+							<option value="Portsmouth">Portsmouth</option>
+							<option value="York">York</option>
+						</select>
+					</div>
+					<div class="search__box">
+						<label class="search__label" for="rooms">Rooms</label>
+						<select class="select select--smaller" id="rooms">
+							<option value="">Select</option>
+							<option value="1">Studio</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+						</select>
+					</div>
+					<div class="search__box">
+						<label class="search__label" for="min">Min Price</label>
+						<select class="select select--smaller" id="min">
+							<option value="">Select</option>
+							<option value="100">100£</option>
+							<option value="150">150£</option>
+							<option value="200">200£</option>
+							<option value="250">250£</option>
+							<option value="300">300£</option>
+							<option value="350">350£</option>
+							<option value="400">400£</option>
+							<option value="450">450£</option>
+							<option value="500">500£</option>
+							<option value="550">550£</option>
+							<option value="600">600£</option>
+							<option value="650">650£</option>
+							<option value="700">700£</option>
+							<option value="750">750£</option>
+							<option value="800">800£</option>
+						</select>
+					</div>
+					<div class="search__box">
+						<label class="search__label" for="max">Max Price</label>
+						<select class="select select--smaller" id="max">
+							<option value="">Select</option>
+							<option value="150">150£</option>
+							<option value="200">200£</option>
+							<option value="250">250£</option>
+							<option value="300">300£</option>
+							<option value="350">350£</option>
+							<option value="400">400£</option>
+							<option value="450">450£</option>
+							<option value="500">500£</option>
+							<option value="550">550£</option>
+							<option value="600">600£</option>
+							<option value="650">650£</option>
+							<option value="700">700£</option>
+							<option value="750">750£</option>
+							<option value="800">800£</option>
+							<option value="850">850£</option>
+							<option value="900">900£</option>
+							<option value="950">950£</option>
+							<option value="1000">1000£</option>
+						</select>
+					</div>
+				</div>
+				<div class="search__row">
+					<div class="search__box">
+						<label class="search__label" for="property-type">Property type</label>
+						<select class="select select--bigger" id="property-type">
+							<option value="">Select</option>
+							<option value="detached">Detached</option>
+							<option value="semi-detached">Semi detached</option>
+							<option value="terraced">Terraced</option>
+							<option value="flat">Flat</option>
+							<option value="bungalow">Bungalow</option>
+							<option value="student-hall">Student Hall</option>
+						</select>
+					</div>
+					<div class="search__box">
+						<label class="search__label" for="deposit">Deposit</label>
+						<select class="select select--bigger" id="deposit">
+							<option value="">Select</option>
+							<option value="yes">Yes</option>
+							<option value="no">No</option>
+						</select>
+					</div>
+					<div class="search__box">
+						<label class="search__label" for="house-share">House share</label>
+						<select class="select select--bigger" id="house-share">
+							<option value="">Select</option>
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+						</select>
+					</div>
+				</div>
+			</form>
+		</section>
+		<section class="flats">
+			<div class="flats__container" id="flats-container">
+
+				<div class="flats__single-flat">
+
+					<div class="flats__half-content-box">
+						<div class="flats__top-box">
+							<div class="flats__single-image-box">
+								<img src="" alt="" class="flats__image">
+							</div>
+							<div class="flats__single-image-box">
+								<img src="" alt="" class="flats__image">
+							</div>
+						</div>
+						<div class="flats__bottom-box">
+							<span class="flats__price flats__price--per-month">1000</span>
+							<span class="flats__price flats__price--per-week">250</span>
+						</div>
+					</div>
+
+					<div class="flats__half-content-box">
+						<div class="flats__top-box">
+							<div class="flats__info-box">
+								<h3 class="flats__title">Kwawalerka, London</h3>
+								<span class="flats__adress">London Chelsea, road 43/21</span>
+								<p class="flats__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue,
+									suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus.</p>
+							</div>
+						</div>
+						<div class="flats__bottom-box">
+							<div class="flats__contact-box">
+								<img class="flats__contact-icon" src="images/mail-envelope.png" alt="Mail envelope icon">
+								<span>mail@mail.com</span>
+							</div>
+							<div class="flats__contact-box">
+								<img class="flats__contact-icon" src="images/phone-receiver.png" alt="Phone icon">
+								<span>+4800000000</span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+	</main>
+	<footer class="footer">
+		<span>© All Rights Reserved.</span>
+		<span>Patryk Białek</span>
+	</footer>
+</body>
+
+</html>
