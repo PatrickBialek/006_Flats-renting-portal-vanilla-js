@@ -15,6 +15,24 @@
 	}
 }
 
+.btn {
+	padding: 8px 16px;
+	font-size: 1.7rem;
+	cursor: pointer;
+	outline: none;
+
+	&--green {
+		background-color: $green;
+		color: $white;
+		transition: all ease-out .3s;
+		border: none;
+
+		&:hover {
+			background-color: $green-hover;
+		}
+	}
+}
+
 @media (max-width: 880px) {
 	.select {
 		&--bigger {
