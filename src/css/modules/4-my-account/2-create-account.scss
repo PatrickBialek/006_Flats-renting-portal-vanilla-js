@@ -27,12 +27,13 @@
 	&__field {
 		outline: none;
 		padding: 4px 8px;
-		font-size: 1.8rem;
+		font-size: 1.7rem;
 	}
 
 	&__negation {
 		font-size: 1.4rem;
 		cursor: pointer;
 		text-decoration: underline;
+		color: #5f5f5f;
 	}
 }

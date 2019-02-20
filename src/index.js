@@ -1,2 +1,3 @@
 // JS
-import "./js/app.js";
+import "./js/account/account.js";
+import "./js/searchEngine.js";
