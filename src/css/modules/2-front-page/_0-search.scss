@@ -2,10 +2,12 @@
 	align-items: center;
 	color: $white;
 	justify-content: center;
-	background-image: linear-gradient(rgb(42, 157, 143), rgba(42, 157, 143, .3)), url(../images/background-image.jpg);
+	background-image: linear-gradient(rgba(42, 157, 143, .85), rgba(42, 157, 143, .8)), url(../images/background-image.jpg);
 	background-position: bottom center;
 	background-size: cover;
-	padding: 5rem 2rem 12.5rem;
+	padding: 10rem 2rem 15rem;
+	clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 0% 100%);
+	background-color: #e9e9eb;
 
 	&,
 	&__box,

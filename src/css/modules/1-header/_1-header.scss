@@ -1,11 +1,16 @@
 .header {
-	background-color: $green;
+	z-index: 3;
+	position: fixed;
 	box-sizing: border-box;
 	color: $white;
-	padding: 3rem 3rem;
+	padding: 2.5rem 3rem;
 	width: 100%;
 	justify-content: space-between;
 	align-items: center;
+
+	&--green {
+		background-color: $green;
+	}
 
 	&,
 	&__container {

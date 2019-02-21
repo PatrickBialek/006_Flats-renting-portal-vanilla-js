@@ -1,3 +1,3 @@
 // JS
-import "./js/account/account.js";
-import "./js/searchEngine.js";
+import "./js/account/account-app.js";
+import "./js/search/search-app.js";
