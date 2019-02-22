@@ -33,6 +33,8 @@ class CORE {
 				if (user) {
 					const user = firebase.auth().currentUser;
 
+					html.userSingedIn();
+
 					if (user != null) {
 						const email = user.email;
 
@@ -67,6 +69,17 @@ class CORE {
 
 				console.log("error code: " + errorCode);
 				console.log("error message: " + errorMessage);
+			});
+	}
+
+	signOut() {
+		firebase.auth()
+			.signOut()
+			.then(() => {
+				html.logInTemplate();
+			})
+			.catch(error => {
+				console.log(error);
 			});
 	}
 }

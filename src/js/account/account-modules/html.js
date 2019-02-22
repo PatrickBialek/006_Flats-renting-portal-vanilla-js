@@ -89,10 +89,6 @@ class HTML {
 					<label class="create-account__label" for="new-user-password">Password:</label>
 					<input class="create-account__field" type="password" id="new-user-password">
 				</div>
-				<div class="create-account__row">
-					<label class="create-account__label" for="new-user-password">Repeat Password:</label>
-					<input class="create-account__field" type="password" id="new-user-password-repeat">
-				</div>
 				<input class="btn btn--green margin-bottom-medium" type="submit" id="sign-up" value="Create">
 				<span class="create-account__negation" id="have-account-text">I have an account</span>
 			</div>
@@ -130,6 +126,21 @@ class HTML {
 
 		const signInBtn = document.querySelector('#log-in');
 		signInBtn.addEventListener("click", core.signIn);
+	}
+
+	userSingedIn() {
+		html.addFlatTemplate();
+
+		const signOutTemplate = `
+			<div class="sign-out">
+				<span class="sign-out__btn" id="sign-out-user">SingOut</span>
+			</div>
+		`;
+
+		main.innerHTML += signOutTemplate;
+
+		const signOutBtn = document.querySelector('#sign-out-user');
+		signOutBtn.addEventListener("click", core.signOut);
 	}
 }
 
