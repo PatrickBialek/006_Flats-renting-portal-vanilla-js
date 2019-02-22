@@ -1,5 +1,6 @@
 import {
-	main
+	main,
+	html
 } from '../account-app.js';
 
 // Here are placed html templates 
@@ -95,11 +96,14 @@ class HTML {
 					<input class="create-account__field" type="password" id="new-user-password-repeat">
 				</div>
 				<input class="btn btn--green margin-bottom-medium" type="submit" id="log-in" value="Create">
-				<span class="create-account__negation" id="dont-have-account-text">I have an account</span>
+				<span class="create-account__negation" id="have-account-text">I have an account</span>
 			</div>
 		`;
 
 		main.innerHTML = createAccountTemplateHTML;
+
+		const signUpText = document.querySelector('#have-account-text');
+		signUpText.addEventListener("click", html.logInTemplate);
 	}
 
 	logInTemplate() {
@@ -119,6 +123,9 @@ class HTML {
 		`;
 
 		main.innerHTML = logInTemplateHTML;
+
+		const signInText = document.querySelector('#dont-have-account-text');
+		signInText.addEventListener("click", html.createAccountTemplate);
 	}
 }
 

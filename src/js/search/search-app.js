@@ -5,6 +5,7 @@ import {
 const flatsContainer = document.querySelector("#flats-container");
 const search = new SEARCH();
 
+// Check if main page is visiting
 if (flatsContainer) {
 
 	const city = document.querySelector("#city"),

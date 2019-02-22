@@ -12,9 +12,15 @@ import {
 
 const html = new HTML(),
 	core = new CORE(),
-	main = document.querySelector('#account-area-main');
+	main = document.querySelector('#account-area-main'),
+	mainAccountArea = document.querySelector('#account-area-main');
+
 
 core.initializeFirebase();
+
+if (mainAccountArea) {
+	core.checkIfUserIsLogIn();
+}
 
 export {
 	main,
