@@ -15,7 +15,6 @@ const html = new HTML(),
 	main = document.querySelector('#account-area-main'),
 	mainAccountArea = document.querySelector('#account-area-main');
 
-
 core.initializeFirebase();
 
 if (mainAccountArea) {
@@ -24,5 +23,6 @@ if (mainAccountArea) {
 
 export {
 	main,
-	html
+	html,
+	core
 };

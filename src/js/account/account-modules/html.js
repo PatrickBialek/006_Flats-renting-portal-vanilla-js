@@ -1,7 +1,9 @@
 import {
 	main,
-	html
+	html,
+	core
 } from '../account-app.js';
+
 
 // Here are placed html templates 
 class HTML {
@@ -84,10 +86,6 @@ class HTML {
 					<input class="create-account__field" type="text" id="new-user-mail-adress">
 				</div>
 				<div class="create-account__row">
-					<label class="create-account__label" for="new-user-nick">Login: </label>
-					<input class="create-account__field" type="text" id="new-user-nick">
-				</div>
-				<div class="create-account__row">
 					<label class="create-account__label" for="new-user-password">Password:</label>
 					<input class="create-account__field" type="password" id="new-user-password">
 				</div>
@@ -95,23 +93,26 @@ class HTML {
 					<label class="create-account__label" for="new-user-password">Repeat Password:</label>
 					<input class="create-account__field" type="password" id="new-user-password-repeat">
 				</div>
-				<input class="btn btn--green margin-bottom-medium" type="submit" id="log-in" value="Create">
+				<input class="btn btn--green margin-bottom-medium" type="submit" id="sign-up" value="Create">
 				<span class="create-account__negation" id="have-account-text">I have an account</span>
 			</div>
 		`;
 
 		main.innerHTML = createAccountTemplateHTML;
 
-		const signUpText = document.querySelector('#have-account-text');
-		signUpText.addEventListener("click", html.logInTemplate);
+		const signInText = document.querySelector('#have-account-text');
+		signInText.addEventListener("click", html.logInTemplate);
+
+		const signUpBtn = document.querySelector('#sign-up');
+		signUpBtn.addEventListener("click", core.signUp);
 	}
 
 	logInTemplate() {
 		const logInTemplateHTML = `
 			<div class="log-in margin-bottom-medium">
 				<div class="log-in__row">
-					<label class="log-in__label" for="user-nick">Login:</label>
-					<input class="log-in__field" type="text" id="user-nick">
+					<label class="log-in__label" for="user-email">Email:</label>
+					<input class="log-in__field" type="text" id="user-email">
 				</div>
 				<div class="log-in__row">
 					<label class="log-in__label" for="user-password">Password:</label>
@@ -124,8 +125,11 @@ class HTML {
 
 		main.innerHTML = logInTemplateHTML;
 
-		const signInText = document.querySelector('#dont-have-account-text');
-		signInText.addEventListener("click", html.createAccountTemplate);
+		const signUpText = document.querySelector('#dont-have-account-text');
+		signUpText.addEventListener("click", html.createAccountTemplate);
+
+		const signInBtn = document.querySelector('#log-in');
+		signInBtn.addEventListener("click", core.signIn);
 	}
 }
 

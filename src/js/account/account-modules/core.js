@@ -39,27 +39,35 @@ class CORE {
 					}
 				} else {
 					html.logInTemplate();
-
-					//const singInText = document.querySelector('#dont-have-account-text');
-					//singInText.addEventListener("click", html.createAccountTemplate);
-
-					/*const signUpText = document.querySelector('#have-account-text');
-					signUpText.addEventListener("click", html.logInTemplate);*/
 				}
 			});
 	}
 
-	logIn() {
-		html.logInTemplate();
-		const logInBtn = document.querySelector('#log-in');
+	signIn() {
+		firebase.auth()
+			.signInWithEmailAndPassword(email, password)
+			.catch(error => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
 
-		logInBtn.addEventListener('click', () => {
-			const nick = document.querySelector('#user-nick').value,
-				password = document.querySelector('#user-password').value;
+				console.log("error code: " + errorCode);
+				console.log("error message: " + errorMessage);
+			});
+	}
 
-			console.log(nick);
-			console.log(password);
-		});
+	signUp() {
+		const email = document.querySelector('#new-user-mail-adress').value,
+			password = document.querySelector('#new-user-password').value;
+
+		firebase.auth()
+			.createUserWithEmailAndPassword(email, password)
+			.catch(error => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+
+				console.log("error code: " + errorCode);
+				console.log("error message: " + errorMessage);
+			});
 	}
 }
 
