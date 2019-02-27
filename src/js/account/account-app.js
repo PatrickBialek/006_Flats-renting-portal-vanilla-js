@@ -1,8 +1,3 @@
-// This import loads the firebase namespace.
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
-
 import {
 	HTML
 } from './account-modules/html.js';

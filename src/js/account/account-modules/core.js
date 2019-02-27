@@ -4,13 +4,9 @@ import 'firebase/auth';
 import 'firebase/database';
 
 import {
-	main,
 	html,
 	core
 } from '../account-app.js';
-import {
-	HTML
-} from './html.js';
 
 // Here is placed logic responsible for account servicing
 class CORE {
@@ -46,30 +42,55 @@ class CORE {
 	}
 
 	signIn() {
-		firebase.auth()
-			.signInWithEmailAndPassword(email, password)
-			.catch(error => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
+		const email = document.querySelector('#user-email').value,
+			password = document.querySelector('#user-password').value,
+			re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+			isEmailCorrect = re.test(email),
+			errors = [];
 
-				console.log("error code: " + errorCode);
-				console.log("error message: " + errorMessage);
-			});
+		if (isEmailCorrect) {
+			firebase.auth()
+				.signInWithEmailAndPassword(email, password)
+				.catch(error => {
+					const errorCode = error.code;
+					const errorMessage = error.message;
+
+					console.log("error code: " + errorCode);
+					console.log("error message: " + errorMessage);
+
+					errors.push(errorMessage);
+					html.displayError(errors);
+				});
+		} else {
+			errors.push("Format of email adress is wrong.");
+			html.displayError(errors);
+		}
 	}
 
 	signUp() {
 		const email = document.querySelector('#new-user-mail-adress').value,
-			password = document.querySelector('#new-user-password').value;
+			password = document.querySelector('#new-user-password').value,
+			re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+			isEmailCorrect = re.test(email),
+			errors = [];
 
-		firebase.auth()
-			.createUserWithEmailAndPassword(email, password)
-			.catch(error => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
+		if (isEmailCorrect) {
+			firebase.auth()
+				.createUserWithEmailAndPassword(email, password)
+				.catch(error => {
+					const errorCode = error.code;
+					const errorMessage = error.message;
 
-				console.log("error code: " + errorCode);
-				console.log("error message: " + errorMessage);
-			});
+					console.log("error code: " + errorCode);
+					console.log("error message: " + errorMessage);
+
+					errors.push(errorMessage);
+					html.displayError(errors);
+				});
+		} else {
+			errors.push("Format of email adress is wrong.");
+			html.displayError(errors);
+		}
 	}
 
 	signOut() {

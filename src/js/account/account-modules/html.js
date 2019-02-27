@@ -82,16 +82,15 @@ class HTML {
 		const createAccountTemplateHTML = `
 			<div class="create-account margin-bottom-medium">
 				<div class="create-account__row">
-					<label class="create-account__label" for="new-user-mail-adress">Mail adress:</label>
-					<input class="create-account__field" type="text" id="new-user-mail-adress">
+					<input class="create-account__field" type="text" placeholder="Your e-mail..." id="new-user-mail-adress">
 				</div>
 				<div class="create-account__row">
-					<label class="create-account__label" for="new-user-password">Password:</label>
-					<input class="create-account__field" type="password" id="new-user-password">
+					<input class="create-account__field" type="password" placeholder="Your password..." id="new-user-password">
 				</div>
 				<input class="btn btn--green margin-bottom-medium" type="submit" id="sign-up" value="Create">
 				<span class="create-account__negation" id="have-account-text">I have an account</span>
 			</div>
+			<div class="create-account__error-field" id="error-field"></div>
 		`;
 
 		main.innerHTML = createAccountTemplateHTML;
@@ -107,16 +106,15 @@ class HTML {
 		const logInTemplateHTML = `
 			<div class="log-in margin-bottom-medium">
 				<div class="log-in__row">
-					<label class="log-in__label" for="user-email">Email:</label>
-					<input class="log-in__field" type="text" id="user-email">
+					<input class="log-in__field" type="text" placeholder="Your e-mail..." id="user-email">
 				</div>
 				<div class="log-in__row">
-					<label class="log-in__label" for="user-password">Password:</label>
-					<input class="log-in__field" type="password" id="user-password">
+					<input class="log-in__field" type="password" placeholder="Your password..." id="user-password">
 				</div>
 				<input class="btn btn--green margin-bottom-medium" type="submit" id="log-in" value="Log In">
 				<span class="log-in__negation" id="dont-have-account-text">I don't have an account</span>
 			</div>
+			<div class="log-in__error-field" id="error-field"></div>
 		`;
 
 		main.innerHTML = logInTemplateHTML;
@@ -125,6 +123,7 @@ class HTML {
 		signUpText.addEventListener("click", html.createAccountTemplate);
 
 		const signInBtn = document.querySelector('#log-in');
+
 		signInBtn.addEventListener("click", core.signIn);
 	}
 
@@ -141,6 +140,19 @@ class HTML {
 
 		const signOutBtn = document.querySelector('#sign-out-user');
 		signOutBtn.addEventListener("click", core.signOut);
+	}
+
+	displayError(errors) {
+		const errorField = document.querySelector('#error-field');
+		errorField.innerHTML = "";
+
+		errors.forEach(error => {
+			const log = document.createElement('span');
+			log.classList.add('single-error');
+			log.innerText = error;
+
+			errorField.appendChild(log);
+		})
 	}
 }
 
