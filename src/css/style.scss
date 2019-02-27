@@ -18,8 +18,9 @@
 
 @import "modules/3-footer/_1-footer";
 
-@import "modules/4-my-account/0-layout.scss";
-@import "modules/4-my-account/1-login-in.scss";
-@import "modules/4-my-account/2-create-account.scss";
-@import "modules/4-my-account/3-add-flat.scss";
-@import "modules/4-my-account/4-sing-out.scss";
+@import "modules/4-my-account/_0-layout";
+@import "modules/4-my-account/_1-login-in";
+@import "modules/4-my-account/_2-create-account";
+@import "modules/4-my-account/_3-add-flat";
+@import "modules/4-my-account/_4-sing-out";
+@import "modules/4-my-account/_5-user-flats";

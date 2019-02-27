@@ -42,7 +42,8 @@ class HTML {
 				</div>
 				<div class="add-flat__row">
 					<label class="add-flat__label" for="add-flat-price">Fee per month in £:</label>
-					<input class="create-account__field" type="text" id="add-flat-price">
+					<input class="range" type="range" id="add-flat-price" name="price" min="0" max="1000" value="90" step="10">
+					<label class="add-flat__label margin-top-medium">Price: <span class="range-resault" id="add-flat-range-result"></span></label>
 				</div>
 				<div class="add-flat__row">
 					<label class="add-flat__label" for="add-flat-property-type">Property type:</label>
@@ -78,6 +79,13 @@ class HTML {
 		`;
 
 		main.innerHTML = addFlatTemplateHTML;
+
+		const range = document.querySelector('#add-flat-price'),
+			priceContainer = document.querySelector('#add-flat-range-result');
+
+		console.log(range);
+
+		range.addEventListener('click', html.showUserPrice(priceContainer, range));
 	}
 
 	createAccountTemplate() {
@@ -136,7 +144,7 @@ class HTML {
 					<h2 class="user-flats__title">Your flats:</h2>
 					<div class="user-flats__container"></div>
 				</div>
-				<div class="sign-out">
+				<div class="sign-out margin-left-medium">
 					<span class="sign-out__btn" id="sign-out-user">SingOut</span>
 				</div>
 			</div>
@@ -164,6 +172,10 @@ class HTML {
 
 			errorField.appendChild(log);
 		})
+	}
+
+	showUserPrice(priceContainer, range) {
+		console.log('range test');
 	}
 }
 
