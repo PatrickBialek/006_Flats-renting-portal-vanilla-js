@@ -413,9 +413,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   background-color: #f5f5f5;
   padding: 10rem 1rem 0rem; }
+  .account-area__1-of-3 {
+    width: 30%; }
+  .account-area__2-of-3 {
+    width: 60%; }
 
 .log-in {
   padding: 3rem 2rem 2rem;

@@ -9,6 +9,7 @@ import {
 class HTML {
 	addFlatTemplate() {
 		const addFlatTemplateHTML = `
+		<div class="account-area__1-of-3">
 			<div class="add-flat">
 				<div class="add-flat__row">
 					<label class="add-flat__label" for="add-flat-city">City:</label>
@@ -73,6 +74,7 @@ class HTML {
 				</div>
 				<input class="btn btn--green margin-bottom-medium" type="submit" id="add-flat" value="Add">
 			</div>
+		</div>
 		`;
 
 		main.innerHTML = addFlatTemplateHTML;
@@ -127,19 +129,28 @@ class HTML {
 		signInBtn.addEventListener("click", core.signIn);
 	}
 
-	userSingedIn() {
-		html.addFlatTemplate();
-
-		const signOutTemplate = `
-			<div class="sign-out">
-				<span class="sign-out__btn" id="sign-out-user">SingOut</span>
+	userFlats() {
+		const flatsContainerTemplate = `
+			<div class="account-area__2-of-3">
+				<div class="user-flats">
+					<h2 class="user-flats__title">Your flats:</h2>
+					<div class="user-flats__container"></div>
+				</div>
+				<div class="sign-out">
+					<span class="sign-out__btn" id="sign-out-user">SingOut</span>
+				</div>
 			</div>
 		`;
 
-		main.innerHTML += signOutTemplate;
+		main.innerHTML += flatsContainerTemplate;
 
 		const signOutBtn = document.querySelector('#sign-out-user');
 		signOutBtn.addEventListener("click", core.signOut);
+	}
+
+	userSingedIn() {
+		html.addFlatTemplate();
+		html.userFlats();
 	}
 
 	displayError(errors) {
