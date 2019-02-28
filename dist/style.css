@@ -500,23 +500,37 @@ input[type=range]:focus::-ms-fill-upper {
   flex-direction: column;
   padding: 1.5rem 3rem;
   background-color: #2A9D8F;
-  color: white;
+  color: #fff;
   text-align: center; }
   .footer span {
     display: inline-block; }
 
 .account-area {
   height: 85vh;
-  display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: row;
   background-color: #f5f5f5;
   padding: 10rem 1rem 0rem; }
+  .account-area, .account-area__content-box, .account-area__1-of-3, .account-area__2-of-3 {
+    display: flex;
+    justify-content: center; }
+  .account-area__content-box {
+    max-width: 1350px;
+    width: 100%; }
+  .account-area__1-of-3, .account-area__2-of-3 {
+    flex-direction: column; }
   .account-area__1-of-3 {
-    width: 30%; }
+    width: 32%; }
   .account-area__2-of-3 {
-    width: 60%; }
+    width: 64%;
+    flex-direction: column; }
+  .account-area__title {
+    margin-bottom: 1.5rem;
+    padding-left: 2px; }
+    .account-area__title h2 {
+      color: red;
+      font-weight: bold;
+      font-size: 1.75rem; }
 
 .log-in {
   padding: 3rem 2rem 2rem;
@@ -629,4 +643,5 @@ input[type=range]:focus::-ms-fill-upper {
   justify-content: center;
   align-items: center;
   border-radius: 16px;
-  margin-left: 14px; }
+  margin-left: 14px;
+  height: 450px; }

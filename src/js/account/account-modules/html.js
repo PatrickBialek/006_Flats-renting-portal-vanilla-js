@@ -10,6 +10,9 @@ class HTML {
 	addFlatTemplate() {
 		const addFlatTemplateHTML = `
 		<div class="account-area__1-of-3">
+			<div class="account-area__title">
+				<h2>Add new:</h2>
+			</div>
 			<div class="add-flat">
 				<div class="add-flat__row">
 					<label class="add-flat__label" for="add-flat-city">City:</label>
@@ -140,12 +143,14 @@ class HTML {
 	userFlats() {
 		const flatsContainerTemplate = `
 			<div class="account-area__2-of-3">
+				<div class="account-area__title margin-left-medium">
+					<h2>Your flats:</h2>
+				</div>
 				<div class="user-flats">
-					<h2 class="user-flats__title">Your flats:</h2>
 					<div class="user-flats__container"></div>
 				</div>
 				<div class="sign-out margin-left-medium">
-					<span class="sign-out__btn" id="sign-out-user">SingOut</span>
+					<input class="btn btn--green margin-top-medium" type="submit" id="sign-out-user" value="Sign Out">
 				</div>
 			</div>
 		`;

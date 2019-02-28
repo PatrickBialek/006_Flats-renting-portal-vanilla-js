@@ -31,7 +31,7 @@
 		background-color: $white;
 		max-width: 800px;
 		box-sizing: border-box;
-		box-shadow: 1px 1px 8px 0px #d8d8d8;
+		box-shadow: 1px 1px 8px 0px $box-shadow;
 	}
 
 	&__half-content-box {
