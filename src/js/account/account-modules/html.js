@@ -95,10 +95,16 @@ class HTML {
 		const createAccountTemplateHTML = `
 			<div class="create-account margin-bottom-medium">
 				<div class="create-account__row">
-					<button class="loginBtn loginBtn--facebook">Continue with Facebook</button>
+					<a href="#" class="sign-up-btn sign-up-btn--facebook" id="continue-with-facebook">
+						<i class="fa fa-facebook visible-xs"></i>
+						<span class="hidden-xs">Continue with Facebook</span>
+					</a>
 				</div>
 				<div class="create-account__row">
-					<button class="loginBtn loginBtn--google">Continue with Google</button>
+					<a href="#" class="sign-up-btn sign-up-btn--google" id="continue-with-google">
+						<i class="fa fa-google-plus visible-xs"></i>
+						<span class="hidden-xs">Continue with Google</span>
+					</a>
 				</div>
 				<div class="create-account__row">
 					<input class="create-account__field" type="text" placeholder="Your e-mail..." id="new-user-mail-adress">
