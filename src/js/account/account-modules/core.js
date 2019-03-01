@@ -95,6 +95,58 @@ class CORE {
 		}
 	}
 
+	continueWithFacebook() {
+		console.log('facebook');
+		const provider = new firebase.auth.FacebookAuthProvider();
+		const errors = [];
+
+		firebase.auth()
+			.signInWithPopup(provider)
+			.then((result) => {
+				const token = result.credential.accessToken;
+				const user = result.user;
+			})
+			.catch((error) => {
+				const errorCode = error.code,
+					errorMessage = error.message,
+					email = error.email,
+					credential = error.credential;
+
+				console.log("error code: " + errorCode);
+				console.log("error message: " + errorMessage);
+				console.log("error email: " + email);
+				console.log("error credential: " + credential);
+
+				errors.push(errorMessage);
+			});
+	}
+
+	continueWithGoogle() {
+		console.log('google');
+		const provider = new firebase.auth.GoogleAuthProvider();
+		const errors = [];
+
+		firebase.auth()
+			.signInWithPopup(provider)
+			.then((result) => {
+				const token = result.credential.accessToken;
+				const user = result.user;
+			})
+			.catch((error) => {
+				const errorCode = error.code,
+					errorMessage = error.message,
+					email = error.email,
+					credential = error.credential;
+
+				console.log("error code: " + errorCode);
+				console.log("error message: " + errorMessage);
+				console.log("error email: " + email);
+				console.log("error credential: " + credential);
+
+				errors.push(errorMessage);
+			});
+	}
+
 	signOut() {
 		firebase.auth()
 			.signOut()

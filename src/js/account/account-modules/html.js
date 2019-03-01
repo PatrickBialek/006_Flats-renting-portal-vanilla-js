@@ -125,6 +125,12 @@ class HTML {
 
 		const signUpBtn = document.querySelector('#sign-up');
 		signUpBtn.addEventListener("click", core.signUp);
+
+		const facebookBtn = document.querySelector('#continue-with-facebook');
+		facebookBtn.addEventListener("click", core.continueWithFacebook);
+
+		const googleBtn = document.querySelector('#continue-with-google');
+		googleBtn.addEventListener("click", core.continueWithGoogle);
 	}
 
 	logInTemplate() {
