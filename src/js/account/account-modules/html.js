@@ -95,6 +95,12 @@ class HTML {
 		const createAccountTemplateHTML = `
 			<div class="create-account margin-bottom-medium">
 				<div class="create-account__row">
+					<button class="loginBtn loginBtn--facebook">Continue with Facebook</button>
+				</div>
+				<div class="create-account__row">
+					<button class="loginBtn loginBtn--google">Continue with Google</button>
+				</div>
+				<div class="create-account__row">
 					<input class="create-account__field" type="text" placeholder="Your e-mail..." id="new-user-mail-adress">
 				</div>
 				<div class="create-account__row">

@@ -49,9 +49,11 @@ class CORE {
 			errors = [];
 
 		if (isEmailCorrect) {
-			firebase.auth()
-				.signInWithEmailAndPassword(email, password)
-				.catch(error => {
+			firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+				.then(() => {
+					return firebase.auth().signInWithEmailAndPassword(email, password);
+				})
+				.catch((error) => {
 					const errorCode = error.code;
 					const errorMessage = error.message;
 
