@@ -1,7 +1,7 @@
 import {
 	flatsContainer,
 	search
-} from '../search-app.js';
+} from '../search.js';
 
 class SEARCH {
 	clearHTML() {

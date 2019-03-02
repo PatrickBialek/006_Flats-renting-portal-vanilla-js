@@ -1,6 +1,6 @@
 import {
 	SEARCH
-} from './search-modules/search.js';
+} from './search-modules/1-search-module';
 
 const flatsContainer = document.querySelector("#flats-container");
 const search = new SEARCH();

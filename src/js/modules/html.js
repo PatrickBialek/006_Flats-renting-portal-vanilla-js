@@ -2,7 +2,7 @@ import {
 	main,
 	html,
 	core
-} from '../account-app.js';
+} from '../app.js';
 
 
 // Here are placed html templates 

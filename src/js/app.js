@@ -1,9 +1,9 @@
 import {
 	HTML
-} from './account-modules/html.js';
+} from './modules/html.js';
 import {
 	CORE
-} from './account-modules/core.js';
+} from './modules/core.js';
 
 const html = new HTML(),
 	core = new CORE(),

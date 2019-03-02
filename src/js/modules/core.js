@@ -6,7 +6,7 @@ import 'firebase/database';
 import {
 	html,
 	core
-} from '../account-app.js';
+} from '../app.js';
 
 // Here is placed logic responsible for account servicing
 class CORE {
@@ -49,7 +49,8 @@ class CORE {
 			errors = [];
 
 		if (isEmailCorrect) {
-			firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+			firebase.auth()
+				.setPersistence(firebase.auth.Auth.Persistence.SESSION)
 				.then(() => {
 					return firebase.auth().signInWithEmailAndPassword(email, password);
 				})
