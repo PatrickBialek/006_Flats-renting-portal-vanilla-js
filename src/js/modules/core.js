@@ -23,6 +23,7 @@ class CORE {
 		firebase.initializeApp(config);
 	}
 
+	// User account
 	checkIfUserIsLogIn() {
 		firebase.auth()
 			.onAuthStateChanged(user => {
@@ -158,6 +159,21 @@ class CORE {
 				console.log(error);
 			});
 	}
+
+	removeUserFlatFromDataBase() {
+		console.log('remove flat');
+	}
+
+	addUserFlatToDataBase() {
+		console.log('add flat');
+	}
+
+	// Main page
+	getFlatsFromDataBase() {
+		console.log('get flats from database');
+		html.flatsTemplateOnMainPage();
+	}
+
 }
 
 export {

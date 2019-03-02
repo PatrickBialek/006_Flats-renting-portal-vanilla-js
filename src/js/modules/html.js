@@ -51,8 +51,8 @@ class HTML {
 				</div>
 				<div class="add-flat__row">
 					<label class="add-flat__label" for="add-flat-price">Fee per month in £:</label>
-					<input class="range" type="range" id="add-flat-price" name="price" min="0" max="1000" value="90" step="10">
-					<label class="add-flat__label margin-top-medium">Price: <span class="range-resault" id="add-flat-range-result"></span></label>
+					<input class="range" type="range" id="add-flat-price" name="price" value="200" min="0" max="1000" value="100" step="10">
+					<span class="add-flat__label margin-top-medium">Price: <span class="add-flat__result" id="add-flat-chosen-price-container"></span><span>
 				</div>
 				<div class="add-flat__row">
 					<label class="add-flat__label" for="add-flat-property-type">Property type:</label>
@@ -88,11 +88,6 @@ class HTML {
 		`;
 
 		main.innerHTML = addFlatTemplateHTML;
-
-		const range = document.querySelector('#add-flat-price'),
-			priceContainer = document.querySelector('#add-flat-range-result');
-
-		range.addEventListener('click', html.showUserPrice(priceContainer, range));
 	}
 
 	createAccountTemplate() {
@@ -158,7 +153,6 @@ class HTML {
 		signUpText.addEventListener("click", html.createAccountTemplate);
 
 		const signInBtn = document.querySelector('#log-in');
-
 		signInBtn.addEventListener("click", core.signIn);
 	}
 
@@ -178,14 +172,23 @@ class HTML {
 		`;
 
 		main.innerHTML += flatsContainerTemplate;
+	}
 
+	userSingedInListeners() {
 		const signOutBtn = document.querySelector('#sign-out-user');
 		signOutBtn.addEventListener("click", core.signOut);
+
+		const priceRange = document.querySelector('#add-flat-price');
+		priceRange.addEventListener('input', html.showUserFlatPrice);
+
+		const addFlatBtn = document.querySelector('#add-flat');
+		addFlatBtn.addEventListener('click', core.addUserFlatToDataBase);
 	}
 
 	userSingedIn() {
 		html.addFlatTemplate();
 		html.userFlats();
+		html.userSingedInListeners();
 	}
 
 	displayError(errors) {
@@ -201,8 +204,11 @@ class HTML {
 		})
 	}
 
-	showUserPrice(priceContainer, range) {
-		console.log('range test');
+	showUserFlatPrice() {
+		const priceContainer = document.querySelector('#add-flat-chosen-price-container');
+		const price = event.target.value;
+
+		priceContainer.innerHTML = price;
 	}
 
 	singleFlatTemplateOnMyAccountPage() {

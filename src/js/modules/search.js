@@ -3,8 +3,8 @@ import {
 } from './search-modules/1-search-module';
 
 import {
-	html
-} from '../app';
+	core
+} from "../app";
 
 const flatsContainer = document.querySelector("#flats-container");
 const search = new SEARCH();
@@ -29,8 +29,7 @@ if (flatsContainer) {
 		};
 
 	document.addEventListener("DOMContentLoaded", () => {
-		//search.showFlats(flats);
-		html.flatsTemplateOnMainPage();
+		core.getFlatsFromDataBase();
 	});
 
 	city.addEventListener("input", e => {
