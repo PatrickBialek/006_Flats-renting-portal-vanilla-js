@@ -2,37 +2,21 @@ import {
 	flatsContainer,
 	search
 } from '../search.js';
+import {
+	html
+} from "../../app";
+
 
 class SEARCH {
-	clearHTML() {
-		flatsContainer.innerHTML = null;
-	}
+	/*showFlats(flats) {
+		html.cleanFlatsContainerMainPage();
+		html.flatsTemplateOnMainPage(flats);
+	}*/
 
-	showFlats(flats) {
-		search.clearHTML();
-
-		flats.forEach(flat => {
-			const TemplateHTML = `
-			<div class="cars__single-car">
-				<h1>${flat.city}</h1>
-			</div>
-			`;
-
-			flatsContainer.innerHTML += TemplateHTML;
-		});
-	}
-
-	noResult() {
-		search.clearHTML();
-
-		const noResultHTML = `
-				<div class="no-result">
-					<span class="no-result__title">No results found</span>
-					<span class="no-result__description">You can change filters if you want find a car</span>
-				</div>
-			`;
-		flatsContainer.innerHTML = noResultHTML;
-	}
+	/*noResult() {
+		html.cleanFlatsContainerMainPage();
+		html.noResultContainerMainPage();
+	}*/
 
 	filterFlats() {
 		const result = flats
@@ -45,9 +29,9 @@ class SEARCH {
 			.filter(filterHouseShare);
 
 		if (result.length) {
-			search.showFlats(result);
+			html.flatsTemplateOnMainPage(flats);
 		} else {
-			search.noResult();
+			html.noResultContainerMainPage();
 		}
 	}
 

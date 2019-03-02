@@ -2,6 +2,10 @@ import {
 	SEARCH
 } from './search-modules/1-search-module';
 
+import {
+	html
+} from '../app';
+
 const flatsContainer = document.querySelector("#flats-container");
 const search = new SEARCH();
 
@@ -25,7 +29,8 @@ if (flatsContainer) {
 		};
 
 	document.addEventListener("DOMContentLoaded", () => {
-		search.showFlats(flats);
+		//search.showFlats(flats);
+		html.flatsTemplateOnMainPage();
 	});
 
 	city.addEventListener("input", e => {

@@ -1,3 +1,5 @@
+import "./modules/search";
+
 import {
 	HTML
 } from './modules/html.js';

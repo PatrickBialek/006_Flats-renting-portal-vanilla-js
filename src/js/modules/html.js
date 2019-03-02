@@ -4,10 +4,16 @@ import {
 	core
 } from '../app.js';
 
+import {
+	flatsContainer
+} from '../modules/search';
+
 
 // Here are placed html templates 
 class HTML {
 	addFlatTemplate() {
+
+		// User area HTML templates
 		const addFlatTemplateHTML = `
 		<div class="account-area__1-of-3">
 			<div class="account-area__title">
@@ -85,8 +91,6 @@ class HTML {
 
 		const range = document.querySelector('#add-flat-price'),
 			priceContainer = document.querySelector('#add-flat-range-result');
-
-		console.log(range);
 
 		range.addEventListener('click', html.showUserPrice(priceContainer, range));
 	}
@@ -199,6 +203,45 @@ class HTML {
 
 	showUserPrice(priceContainer, range) {
 		console.log('range test');
+	}
+
+	singleFlatTemplateOnMyAccountPage() {
+
+	}
+
+	removeSingleFlatOnMyAccountPage() {
+
+	}
+
+	// Main page HTML templates
+	flatsTemplateOnMainPage(flats) {
+		console.log(flats);
+
+		// will be use later
+		/*flats.forEach(flat => {
+			const TemplateHTML = `
+			<div class="cars__single-car">
+				<h1>${flat.city}</h1>
+			</div>
+			`;
+
+			flatsContainer.innerHTML += TemplateHTML;
+		});*/
+	}
+
+	cleanFlatsContainerMainPage() {
+		flatsContainer.innerHTML = null;
+	}
+
+	noResultContainerMainPage() {
+		const noResultHTML = `
+			<div class="no-result">
+				<span class="no-result__title">No results found</span>
+				<span class="no-result__description">You can change filters if you want find a car</span>
+			</div>
+		`;
+
+		flatsContainer.innerHTML = noResultHTML;
 	}
 }
 
