@@ -240,19 +240,41 @@ class HTML {
 	}
 
 	// Main page HTML templates
-	flatsTemplateOnMainPage(flats) {
-		console.log(flats);
-
-		// will be use later
-		/*flats.forEach(flat => {
-			const TemplateHTML = `
-			<div class="cars__single-car">
-				<h1>${flat.city}</h1>
+	flatsTemplateOnMainPage(flatData, flatsContainer) {
+		const singleFlatTemplateHTML = `
+			<div class="flats__single-flat">
+				<div class="flats__half-content-box padding-bottom-medium">
+					<div class="flats__top-box">
+						<div class="flats__single-image-box">
+							<img src="" alt="" class="flats__image">
+						</div>
+						<div class="flats__single-image-box">
+							<img src="" alt="" class="flats__image">
+						</div>
+					</div>
+					<div class="flats__bottom-box">
+						<div>
+							<span>Per month: <span class="flats__price flats__price--per-month">${flatData.pricePerMonth} £</span></span>
+							<span>Per week: <span class="flats__price flats__price--per-week">${flatData.pricePerWeek} £</span></span>
+						</div>
+					</div>
+				</div>
+				<div class="flats__half-content-box padding-y-medium">
+					<div class="flats__top-box">
+						<div class="flats__info-box">
+								<h3 class="flats__title">Rooms: ${flatData.rooms}, City: ${flatData.city}</h3>
+								<span class="flats__adress">Adres:</span>
+								<p class="flats__description">Opis:</p>
+							</div>
+						</div>
+						<div class="flats__bottom-box">
+							<span class="flats__contact-box">mail@mail.com, +4800000000</span>
+					</div>
+				</div>
 			</div>
-			`;
+		`;
 
-			flatsContainer.innerHTML += TemplateHTML;
-		});*/
+		flatsContainer.innerHTML += singleFlatTemplateHTML;
 	}
 
 	cleanFlatsContainerMainPage() {

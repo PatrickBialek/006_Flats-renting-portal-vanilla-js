@@ -6,6 +6,7 @@ import {
 	core
 } from "../app";
 
+
 const flatsContainer = document.querySelector("#flats-container");
 const search = new SEARCH();
 

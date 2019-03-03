@@ -8,15 +8,15 @@ import {
 
 
 class SEARCH {
-	/*showFlats(flats) {
+	showFlats(flats) {
 		html.cleanFlatsContainerMainPage();
 		html.flatsTemplateOnMainPage(flats);
-	}*/
+	}
 
-	/*noResult() {
+	noResult() {
 		html.cleanFlatsContainerMainPage();
 		html.noResultContainerMainPage();
-	}*/
+	}
 
 	filterFlats() {
 		const result = flats

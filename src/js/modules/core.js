@@ -182,15 +182,17 @@ class CORE {
 		console.log("remove flat");
 	}
 
-	addUserFlatToDataBase(city, rooms, price, propertyType, deposit, houseShare) {
+	addUserFlatToDataBase(city, rooms, pricePerMonth, propertyType, deposit, houseShare) {
 		const key = Object.keys(sessionStorage)[0],
 			userSession = JSON.parse(sessionStorage.getItem(key)),
-			userEmail = userSession.email;
+			userEmail = userSession.email,
+			pricePerWeek = (Number(pricePerMonth) / 4);
 
 		const flat = {
 			city: city,
 			rooms: rooms,
-			price: price,
+			pricePerWeek: pricePerWeek,
+			pricePerMonth: pricePerMonth,
 			propertyType: propertyType,
 			deposit: deposit,
 			houseShare: houseShare,
@@ -208,8 +210,23 @@ class CORE {
 
 	// Main page
 	getFlatsFromDataBase() {
-		console.log("get flats from database");
-		html.flatsTemplateOnMainPage();
+		const flat = firebase.database().ref("flats/");
+		const flats = [];
+		const flatsContainer = document.querySelector('#flats-container');
+
+		flatsContainer.innerHTML = "";
+
+		flat.on("child_added", (data) => {
+			const flatData = data.val();
+			flats.push(flatData);
+
+			if (flatData.readyToPublish === true) {
+				html.flatsTemplateOnMainPage(flatData, flatsContainer);
+			}
+
+		});
+
+		return flats;
 	}
 }
 
