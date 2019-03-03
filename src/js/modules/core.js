@@ -1,12 +1,12 @@
 // This import loads the firebase namespace.
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/database";
 
 import {
 	html,
 	core
-} from '../app.js';
+} from "../app.js";
 
 // Here is placed logic responsible for account servicing
 class CORE {
@@ -25,37 +25,36 @@ class CORE {
 
 	// User account
 	checkIfUserIsLogIn() {
-		firebase.auth()
-			.onAuthStateChanged(user => {
-				if (user) {
-					const user = firebase.auth().currentUser;
+		firebase.auth().onAuthStateChanged(user => {
+			if (user) {
+				const user = firebase.auth().currentUser;
 
-					html.userSingedIn();
+				html.userSingedIn();
 
-					if (user != null) {
-						const email = user.email;
-
-					}
-				} else {
-					html.logInTemplate();
+				if (user != null) {
+					const email = user.email;
 				}
-			});
+			} else {
+				html.logInTemplate();
+			}
+		});
 	}
 
 	signIn() {
-		const email = document.querySelector('#user-email').value,
-			password = document.querySelector('#user-password').value,
+		const email = document.querySelector("#user-email").value,
+			password = document.querySelector("#user-password").value,
 			re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
 			isEmailCorrect = re.test(email),
 			errors = [];
 
 		if (isEmailCorrect) {
-			firebase.auth()
+			firebase
+				.auth()
 				.setPersistence(firebase.auth.Auth.Persistence.SESSION)
 				.then(() => {
 					return firebase.auth().signInWithEmailAndPassword(email, password);
 				})
-				.catch((error) => {
+				.catch(error => {
 					const errorCode = error.code;
 					const errorMessage = error.message;
 
@@ -72,14 +71,15 @@ class CORE {
 	}
 
 	signUp() {
-		const email = document.querySelector('#new-user-mail-adress').value,
-			password = document.querySelector('#new-user-password').value,
+		const email = document.querySelector("#new-user-mail-adress").value,
+			password = document.querySelector("#new-user-password").value,
 			re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
 			isEmailCorrect = re.test(email),
 			errors = [];
 
 		if (isEmailCorrect) {
-			firebase.auth()
+			firebase
+				.auth()
 				.createUserWithEmailAndPassword(email, password)
 				.catch(error => {
 					const errorCode = error.code;
@@ -98,17 +98,18 @@ class CORE {
 	}
 
 	continueWithFacebook() {
-		console.log('facebook');
+		console.log("facebook");
 		const provider = new firebase.auth.FacebookAuthProvider();
 		const errors = [];
 
-		firebase.auth()
+		firebase
+			.auth()
 			.signInWithPopup(provider)
-			.then((result) => {
+			.then(result => {
 				const token = result.credential.accessToken;
 				const user = result.user;
 			})
-			.catch((error) => {
+			.catch(error => {
 				const errorCode = error.code,
 					errorMessage = error.message,
 					email = error.email,
@@ -124,17 +125,18 @@ class CORE {
 	}
 
 	continueWithGoogle() {
-		console.log('google');
+		console.log("google");
 		const provider = new firebase.auth.GoogleAuthProvider();
 		const errors = [];
 
-		firebase.auth()
+		firebase
+			.auth()
 			.signInWithPopup(provider)
-			.then((result) => {
+			.then(result => {
 				const token = result.credential.accessToken;
 				const user = result.user;
 			})
-			.catch((error) => {
+			.catch(error => {
 				const errorCode = error.code,
 					errorMessage = error.message,
 					email = error.email,
@@ -150,7 +152,8 @@ class CORE {
 	}
 
 	signOut() {
-		firebase.auth()
+		firebase
+			.auth()
 			.signOut()
 			.then(() => {
 				html.logInTemplate();
@@ -160,20 +163,54 @@ class CORE {
 			});
 	}
 
-	removeUserFlatFromDataBase() {
-		console.log('remove flat');
+	validateUserFlatForm() {
+		const city = document.querySelector("#add-flat-city").value,
+			rooms = document.querySelector("#add-flat-rooms").value,
+			price = document.querySelector("#add-flat-price").value,
+			propertyType = document.querySelector("#add-flat-property-type").value,
+			deposit = document.querySelector("#add-flat-deposit").value,
+			houseShare = document.querySelector("#add-flat-house-share").value;
+
+		if (city != "" && rooms != "" && price != "" && propertyType != "" && deposit != "" && houseShare != "") {
+			core.addUserFlatToDataBase(city, rooms, price, propertyType, deposit, houseShare);
+		} else {
+			console.log("select all fields!");
+		}
 	}
 
-	addUserFlatToDataBase() {
-		console.log('add flat');
+	removeUserFlatFromDataBase() {
+		console.log("remove flat");
+	}
+
+	addUserFlatToDataBase(city, rooms, price, propertyType, deposit, houseShare) {
+		const key = Object.keys(sessionStorage)[0],
+			userSession = JSON.parse(sessionStorage.getItem(key)),
+			userEmail = userSession.email;
+
+		const flat = {
+			city: city,
+			rooms: rooms,
+			price: price,
+			propertyType: propertyType,
+			deposit: deposit,
+			houseShare: houseShare,
+			userEmail: userEmail,
+			readyToPublish: false
+		};
+
+		const uniqueKey = Date.now() + Math.floor(Math.random() * 100),
+			db = firebase.database().ref("flats/" + uniqueKey);
+
+		db.set(flat);
+		html.resetAddFlatFields();
+		html.flatHasBeenAdded();
 	}
 
 	// Main page
 	getFlatsFromDataBase() {
-		console.log('get flats from database');
+		console.log("get flats from database");
 		html.flatsTemplateOnMainPage();
 	}
-
 }
 
 export {

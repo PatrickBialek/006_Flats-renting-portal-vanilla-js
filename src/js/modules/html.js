@@ -52,7 +52,7 @@ class HTML {
 				<div class="add-flat__row">
 					<label class="add-flat__label" for="add-flat-price">Fee per month in £:</label>
 					<input class="range" type="range" id="add-flat-price" name="price" value="200" min="0" max="1000" value="100" step="10">
-					<span class="add-flat__label margin-top-medium">Price: <span class="add-flat__result" id="add-flat-chosen-price-container"></span><span>
+					<span class="add-flat__label margin-top-medium">Price: <span class="add-flat__result" id="add-flat-chosen-price-container">200</span><span>
 				</div>
 				<div class="add-flat__row">
 					<label class="add-flat__label" for="add-flat-property-type">Property type:</label>
@@ -70,8 +70,8 @@ class HTML {
 					<label class="add-flat__label" for="add-flat-deposit">Deposit</label>
 					<select class="add-flat__select" id="add-flat-deposit">
 						<option value="">Select</option>
-						<option value="yes">Yes</option>
-						<option value="no">No</option>
+						<option value="Yes">Yes</option>
+						<option value="No">No</option>
 					</select>
 				</div>
 				<div class="add-flat__row">
@@ -182,7 +182,7 @@ class HTML {
 		priceRange.addEventListener('input', html.showUserFlatPrice);
 
 		const addFlatBtn = document.querySelector('#add-flat');
-		addFlatBtn.addEventListener('click', core.addUserFlatToDataBase);
+		addFlatBtn.addEventListener('click', core.validateUserFlatForm);
 	}
 
 	userSingedIn() {
@@ -217,6 +217,26 @@ class HTML {
 
 	removeSingleFlatOnMyAccountPage() {
 
+	}
+
+	resetAddFlatFields() {
+		const city = document.querySelector("#add-flat-city"),
+			rooms = document.querySelector("#add-flat-rooms"),
+			price = document.querySelector("#add-flat-price"),
+			propertyType = document.querySelector("#add-flat-property-type"),
+			deposit = document.querySelector("#add-flat-deposit"),
+			houseShare = document.querySelector("#add-flat-house-share");
+
+		city.value = "";
+		rooms.value = "";
+		price.value = "";
+		propertyType.value = "";
+		deposit.value = "";
+		houseShare.value = "";
+	}
+
+	flatHasBeenAdded() {
+		console.log('Flat has been succesfully aded');
 	}
 
 	// Main page HTML templates
