@@ -4,9 +4,8 @@
 	box-shadow: 1px 1px 8px 0px $box-shadow;
 	justify-content: center;
 	align-items: center;
-	width: 80%;
-	max-width: 300px;
 	border-radius: 16px;
+	flex: 1;
 
 	&,
 	&__row {
@@ -54,9 +53,6 @@
 		font-size: 1.6rem;
 		outline: none;
 	}
-
-	&__text-field {}
-
 
 	&__text-area {
 		resize: none;

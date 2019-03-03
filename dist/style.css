@@ -149,6 +149,9 @@ body {
 .margin-left-medium {
   margin-left: 1.5rem; }
 
+.margin-left-huge {
+  margin-left: 3rem; }
+
 .padding-y-medium {
   padding: 1.5rem 0rem; }
 
@@ -559,14 +562,15 @@ input[type=range]:focus::-ms-fill-upper {
   .account-area__content-box {
     max-width: 1350px;
     width: 100%;
-    padding: 3rem 1rem 5rem; }
+    padding: 3rem 1rem 5rem;
+    align-items: baseline; }
   .account-area__1-of-3, .account-area__2-of-3 {
     flex-direction: column; }
   .account-area__1-of-3 {
-    width: 32%; }
+    flex: 1; }
   .account-area__2-of-3 {
-    width: 64%;
-    flex-direction: column; }
+    flex-direction: column;
+    flex: 2.5; }
   .account-area__title {
     margin-bottom: 1.5rem;
     padding-left: 2px; }
@@ -653,9 +657,8 @@ input[type=range]:focus::-ms-fill-upper {
   box-shadow: 1px 1px 8px 0px #d8d8d8;
   justify-content: center;
   align-items: center;
-  width: 80%;
-  max-width: 300px;
-  border-radius: 16px; }
+  border-radius: 16px;
+  flex: 1; }
   .add-flat, .add-flat__row {
     display: flex;
     flex-direction: column; }
@@ -689,6 +692,10 @@ input[type=range]:focus::-ms-fill-upper {
     resize: none;
     height: 100px; }
 
+.sign-out {
+  margin-left: 3rem;
+  margin-top: 1.5rem; }
+
 .user-flats {
   padding: 2rem;
   background-color: #fff;
@@ -696,5 +703,6 @@ input[type=range]:focus::-ms-fill-upper {
   justify-content: center;
   align-items: center;
   border-radius: 16px;
-  margin-left: 14px;
-  height: 450px; }
+  margin-left: 3rem;
+  height: 450px;
+  flex: 3; }

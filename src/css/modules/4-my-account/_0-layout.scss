@@ -17,6 +17,7 @@
 		max-width: 1350px;
 		width: 100%;
 		padding: 3rem 1rem 5rem;
+		align-items: baseline;
 	}
 
 	&__1-of-3,
@@ -25,12 +26,12 @@
 	}
 
 	&__1-of-3 {
-		width: 32%;
+		flex: 1;
 	}
 
 	&__2-of-3 {
-		width: 64%;
 		flex-direction: column;
+		flex: 2.5;
 	}
 
 	&__title {

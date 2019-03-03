@@ -167,14 +167,14 @@ class HTML {
 	userFlats() {
 		const flatsContainerTemplate = `
 			<div class="account-area__2-of-3">
-				<div class="account-area__title margin-left-medium">
+				<div class="account-area__title margin-left-huge">
 					<h2>Your flats:</h2>
 				</div>
 				<div class="user-flats">
 					<div class="user-flats__container"></div>
 				</div>
-				<div class="sign-out margin-left-medium">
-					<input class="btn btn--green margin-top-medium" type="submit" id="sign-out-user" value="Sign Out">
+				<div class="sign-out">
+					<input class="btn btn--green" type="submit" id="sign-out-user" value="Sign Out">
 				</div>
 			</div>
 		`;
@@ -220,6 +220,10 @@ class HTML {
 	}
 
 	singleFlatTemplateOnMyAccountPage() {
+
+	}
+
+	editSingleFlatOnMyAccountPage() {
 
 	}
 
