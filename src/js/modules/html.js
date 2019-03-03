@@ -38,6 +38,14 @@ class HTML {
 					</select>
 				</div>
 				<div class="add-flat__row">
+					<label class="add-flat__label" for="add-flat-address">Address:</label>
+					<input class="add-flat__text-field" input="text" id="add-flat-address"> 
+				</div>
+				<div class="add-flat__row">
+					<label class="add-flat__label" for="add-flat-description">Description (max 150 characters):</label>
+					<textarea class="add-flat__text-area" id="add-flat-description" maxlength="120"></textarea>
+				</div>
+				<div class="add-flat__row">
 					<label class="add-flat__label" for="add-flat-rooms">Rooms:</label>
 					<select class="add-flat__select" id="add-flat-rooms">
 						<option value="">Select</option>
@@ -221,6 +229,8 @@ class HTML {
 
 	resetAddFlatFields() {
 		const city = document.querySelector("#add-flat-city"),
+			address = document.querySelector("#add-flat-address"),
+			description = document.querySelector("#add-flat-description"),
 			rooms = document.querySelector("#add-flat-rooms"),
 			price = document.querySelector("#add-flat-price"),
 			propertyType = document.querySelector("#add-flat-property-type"),
@@ -228,6 +238,8 @@ class HTML {
 			houseShare = document.querySelector("#add-flat-house-share");
 
 		city.value = "";
+		address.value = "";
+		description.value = "";
 		rooms.value = "";
 		price.value = "";
 		propertyType.value = "";
@@ -263,12 +275,12 @@ class HTML {
 					<div class="flats__top-box">
 						<div class="flats__info-box">
 								<h3 class="flats__title">Rooms: ${flatData.rooms}, City: ${flatData.city}</h3>
-								<span class="flats__adress">Adres:</span>
-								<p class="flats__description">Opis:</p>
+								<span class="flats__adress">Address: ${flatData.address}</span>
+								<p class="flats__description">Opis: ${flatData.description}</p>
 							</div>
 						</div>
 						<div class="flats__bottom-box">
-							<span class="flats__contact-box">mail@mail.com, +4800000000</span>
+							<span class="flats__contact-box">${flatData.userEmail}</span>
 					</div>
 				</div>
 			</div>

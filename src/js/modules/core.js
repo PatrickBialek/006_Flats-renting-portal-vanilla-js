@@ -165,14 +165,16 @@ class CORE {
 
 	validateUserFlatForm() {
 		const city = document.querySelector("#add-flat-city").value,
+			address = document.querySelector("#add-flat-address").value,
+			description = document.querySelector("#add-flat-description").value,
 			rooms = document.querySelector("#add-flat-rooms").value,
 			price = document.querySelector("#add-flat-price").value,
 			propertyType = document.querySelector("#add-flat-property-type").value,
 			deposit = document.querySelector("#add-flat-deposit").value,
 			houseShare = document.querySelector("#add-flat-house-share").value;
 
-		if (city != "" && rooms != "" && price != "" && propertyType != "" && deposit != "" && houseShare != "") {
-			core.addUserFlatToDataBase(city, rooms, price, propertyType, deposit, houseShare);
+		if (city != "" && address != "" && description != "" && rooms != "" && price != "" && propertyType != "" && deposit != "" && houseShare != "") {
+			core.addUserFlatToDataBase(city, address, description, rooms, price, propertyType, deposit, houseShare);
 		} else {
 			console.log("select all fields!");
 		}
@@ -182,7 +184,7 @@ class CORE {
 		console.log("remove flat");
 	}
 
-	addUserFlatToDataBase(city, rooms, pricePerMonth, propertyType, deposit, houseShare) {
+	addUserFlatToDataBase(city, address, description, rooms, pricePerMonth, propertyType, deposit, houseShare) {
 		const key = Object.keys(sessionStorage)[0],
 			userSession = JSON.parse(sessionStorage.getItem(key)),
 			userEmail = userSession.email,
@@ -190,6 +192,8 @@ class CORE {
 
 		const flat = {
 			city: city,
+			address: address,
+			description: description,
 			rooms: rooms,
 			pricePerWeek: pricePerWeek,
 			pricePerMonth: pricePerMonth,
