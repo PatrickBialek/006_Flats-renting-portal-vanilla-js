@@ -55,8 +55,8 @@ class CORE {
 					return firebase.auth().signInWithEmailAndPassword(email, password);
 				})
 				.catch(error => {
-					const errorCode = error.code;
-					const errorMessage = error.message;
+					const errorCode = error.code,
+						errorMessage = error.message;
 
 					console.log("error code: " + errorCode);
 					console.log("error message: " + errorMessage);
@@ -82,8 +82,8 @@ class CORE {
 				.auth()
 				.createUserWithEmailAndPassword(email, password)
 				.catch(error => {
-					const errorCode = error.code;
-					const errorMessage = error.message;
+					const errorCode = error.code,
+						errorMessage = error.message;
 
 					console.log("error code: " + errorCode);
 					console.log("error message: " + errorMessage);
@@ -99,15 +99,15 @@ class CORE {
 
 	continueWithFacebook() {
 		console.log("facebook");
-		const provider = new firebase.auth.FacebookAuthProvider();
-		const errors = [];
+		const provider = new firebase.auth.FacebookAuthProvider(),
+			errors = [];
 
 		firebase
 			.auth()
 			.signInWithPopup(provider)
 			.then(result => {
-				const token = result.credential.accessToken;
-				const user = result.user;
+				const token = result.credential.accessToken,
+					user = result.user;
 			})
 			.catch(error => {
 				const errorCode = error.code,
@@ -126,15 +126,15 @@ class CORE {
 
 	continueWithGoogle() {
 		console.log("google");
-		const provider = new firebase.auth.GoogleAuthProvider();
-		const errors = [];
+		const provider = new firebase.auth.GoogleAuthProvider(),
+			errors = [];
 
 		firebase
 			.auth()
 			.signInWithPopup(provider)
 			.then(result => {
-				const token = result.credential.accessToken;
-				const user = result.user;
+				const token = result.credential.accessToken,
+					user = result.user;
 			})
 			.catch(error => {
 				const errorCode = error.code,
@@ -180,6 +180,22 @@ class CORE {
 		}
 	}
 
+	getUserFlatsFromDataBase() {
+		const flat = firebase.database().ref("flats/"),
+			userFlatsContainer = document.querySelector('#user-flats-container'),
+			key = Object.keys(sessionStorage)[0],
+			userSession = JSON.parse(sessionStorage.getItem(key)),
+			userEmail = userSession.email;
+
+		flat.on("child_added", (data) => {
+			const flatData = data.val();
+
+			if (flatData.userEmail === userEmail) {
+				html.singleFlatTemplateOnMyAccountPage(flatData, userFlatsContainer);
+			}
+		});
+	}
+
 	removeUserFlatFromDataBase() {
 		console.log("remove flat");
 	}
@@ -214,9 +230,9 @@ class CORE {
 
 	// Main page
 	getFlatsFromDataBase() {
-		const flat = firebase.database().ref("flats/");
-		const flats = [];
-		const flatsContainer = document.querySelector('#flats-container');
+		const flat = firebase.database().ref("flats/"),
+			flats = [],
+			flatsContainer = document.querySelector('#flats-container');
 
 		flatsContainer.innerHTML = "";
 
@@ -227,10 +243,7 @@ class CORE {
 			if (flatData.readyToPublish === true) {
 				html.flatsTemplateOnMainPage(flatData, flatsContainer);
 			}
-
 		});
-
-		return flats;
 	}
 }
 

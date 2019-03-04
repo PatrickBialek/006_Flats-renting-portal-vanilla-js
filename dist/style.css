@@ -693,16 +693,98 @@ input[type=range]:focus::-ms-fill-upper {
     height: 100px; }
 
 .sign-out {
-  margin-left: 3rem;
-  margin-top: 1.5rem; }
+  margin-left: 3rem; }
 
 .user-flats {
-  padding: 2rem;
-  background-color: #fff;
-  box-shadow: 1px 1px 8px 0px #d8d8d8;
-  justify-content: center;
-  align-items: center;
-  border-radius: 16px;
   margin-left: 3rem;
-  height: 450px;
   flex: 3; }
+  .user-flats__single-flat-container {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 16px;
+    flex-direction: row;
+    background-color: #fff;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 8px 0px #d8d8d8;
+    margin-bottom: 2.5rem;
+    padding: 1.5rem 1rem 0rem; }
+  .user-flats, .user-flats__container {
+    flex-direction: column;
+    text-align: center; }
+  .user-flats, .user-flats__container, .user-flats__single-flat {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .user-flats__container {
+    padding: 2rem 0rem;
+    width: 100%;
+    max-width: 1200px; }
+  .user-flats__user-tools {
+    display: flex;
+    justify-content: flex-start; }
+  .user-flats__edit, .user-flats__remove {
+    color: #fff;
+    transition: all .3s ease-in-out;
+    border: none; }
+  .user-flats__edit {
+    background-color: #E76F51; }
+    .user-flats__edit:hover {
+      background-color: #cf6348; }
+  .user-flats__remove {
+    margin-left: .75rem;
+    background-color: #e63946; }
+    .user-flats__remove:hover {
+      background-color: #cf333f; }
+  .user-flats__single-flat {
+    width: 100%;
+    margin: .75rem auto 0rem; }
+  .user-flats__half-content-box {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    text-align: left; }
+  .user-flats__top-box {
+    width: 100%;
+    display: flex; }
+  .user-flats__single-image-box {
+    width: 50%;
+    display: flex; }
+  .user-flats__image {
+    height: 100%;
+    width: 100%; }
+  .user-flats__bottom-box {
+    display: flex;
+    padding: 1rem 0rem 0rem;
+    text-align: left;
+    flex-direction: column;
+    justify-content: flex-start; }
+    .user-flats__bottom-box div {
+      padding: 0rem 1.5rem .6rem; }
+    .user-flats__bottom-box span {
+      font-size: 1.4rem; }
+  .user-flats__contact-box {
+    color: #e63946;
+    font-weight: bold; }
+  .user-flats__price, .user-flats__title {
+    color: #e63946;
+    font-weight: bold; }
+  .user-flats__information, .user-flats__picture {
+    width: 50%; }
+  .user-flats__picture {
+    display: flex;
+    justify-content: flex-end; }
+  .user-flats__single-information {
+    display: block;
+    color: #5f5f5f; }
+  .user-flats__title {
+    font-size: 1.8rem; }
+  .user-flats__description {
+    font-size: 1.5rem;
+    font-family: 'Noto Sans', sans-serif;
+    color: #68686d; }
+  .user-flats__adress {
+    color: #53535f;
+    font-weight: bold;
+    font-size: 1.5rem; }
+  .user-flats__image {
+    height: 145px; }

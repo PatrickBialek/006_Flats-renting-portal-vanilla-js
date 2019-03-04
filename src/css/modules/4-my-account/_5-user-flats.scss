@@ -1,11 +1,154 @@
 .user-flats {
-	padding: 2rem;
-	background-color: #fff;
-	box-shadow: 1px 1px 8px 0px $box-shadow;
-	justify-content: center;
-	align-items: center;
-	border-radius: 16px;
 	margin-left: 3rem;
-	height: 450px;
 	flex: 3;
+
+	&__single-flat-container {
+		flex-direction: column;
+		width: 100%;
+		border-radius: 16px;
+		flex-direction: row;
+		background-color: #fff;
+		box-sizing: border-box;
+		box-shadow: 1px 1px 8px 0px #d8d8d8;
+		margin-bottom: 2.5rem;
+		padding: 1.5rem 1rem 0rem;
+	}
+
+	&,
+	&__container {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	&,
+	&__container,
+	&__single-flat {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__container {
+		padding: 2rem 0rem;
+		width: 100%;
+		max-width: 1200px;
+	}
+
+	&__user-tools {
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	&__edit,
+	&__remove {
+		color: $white;
+		transition: all .3s ease-in-out;
+		border: none;
+	}
+
+	&__edit {
+		background-color: $orange;
+
+		&:hover {
+			background-color: $orange-hover;
+		}
+	}
+
+	&__remove {
+		margin-left: .75rem;
+		background-color: $red;
+
+		&:hover {
+			background-color: $red-hover;
+		}
+	}
+
+	&__single-flat {
+		width: 100%;
+		margin: .75rem auto 0rem;
+	}
+
+	&__half-content-box {
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+	}
+
+	&__top-box {
+		width: 100%;
+		display: flex;
+	}
+
+	&__single-image-box {
+		width: 50%;
+		display: flex;
+	}
+
+	&__image {
+		height: 100%;
+		width: 100%;
+	}
+
+	&__bottom-box {
+		display: flex;
+		padding: 1rem 0rem 0rem;
+		text-align: left;
+		flex-direction: column;
+		justify-content: flex-start;
+
+		& div {
+			padding: 0rem 1.5rem .6rem;
+		}
+
+		& span {
+			font-size: 1.4rem;
+		}
+	}
+
+	&__contact-box {
+		color: $red;
+		font-weight: bold;
+	}
+
+	&__price,
+	&__title {
+		color: $red;
+		font-weight: bold;
+	}
+
+	&__information,
+	&__picture {
+		width: 50%;
+	}
+
+	&__picture {
+		display: flex;
+		justify-content: flex-end;
+	}
+
+	&__single-information {
+		display: block;
+		color: $grey;
+	}
+
+	&__title {
+		font-size: 1.8rem;
+	}
+
+	&__description {
+		font-size: 1.5rem;
+		font-family: 'Noto Sans', sans-serif;
+		color: #68686d;
+	}
+
+	&__adress {
+		color: $dark-grey;
+		font-weight: bold;
+		font-size: 1.5rem;
+	}
+
+	&__image {
+		height: 145px;
+	}
 }

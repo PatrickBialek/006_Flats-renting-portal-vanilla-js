@@ -170,8 +170,7 @@ class HTML {
 				<div class="account-area__title margin-left-huge">
 					<h2>Your flats:</h2>
 				</div>
-				<div class="user-flats">
-					<div class="user-flats__container"></div>
+				<div class="user-flats" id="user-flats-container">
 				</div>
 				<div class="sign-out">
 					<input class="btn btn--green" type="submit" id="sign-out-user" value="Sign Out">
@@ -191,12 +190,18 @@ class HTML {
 
 		const addFlatBtn = document.querySelector('#add-flat');
 		addFlatBtn.addEventListener('click', core.validateUserFlatForm);
+
+		const removeFlatBtns = Array.from(document.querySelectorAll('.user-flats__remove'));
+		removeFlatBtns.forEach(removeFlatBtn => removeFlatBtn.addEventListener('click', html.removeSingleFlatOnMyAccountPage));
 	}
 
 	userSingedIn() {
 		html.addFlatTemplate();
 		html.userFlats();
-		html.userSingedInListeners();
+		core.getUserFlatsFromDataBase();
+		setTimeout(() => {
+			html.userSingedInListeners();
+		}, 1500);
 	}
 
 	displayError(errors) {
@@ -219,16 +224,58 @@ class HTML {
 		priceContainer.innerHTML = price;
 	}
 
-	singleFlatTemplateOnMyAccountPage() {
+	singleFlatTemplateOnMyAccountPage(flatData, flatsContainer) {
+		const singleFlatTemplateHTML = `
+			<div class="user-flats__single-flat-container" id="">
+				<div class="user-flats__user-tools">
+					<button class="btn user-flats__edit">Edit</button>
+					<button class="btn user-flats__remove">Remove</button>
+				</div>
+				<div class="user-flats__single-flat">
+					<div class="user-flats__half-content-box padding-bottom-medium">
+						<div class="user-flats__top-box">
+							<div class="user-flats__single-image-box">
+								<img src="" alt="" class="flats__image">
+							</div>
+							<div class="user-flats__single-image-box">
+								<img src="" alt="" class="flats__image">
+							</div>
+						</div>
+						<div class="user-flats__bottom-box">
+							<div>
+								<span>Per month: <span class="user-flats__price user-flats__price--per-month">${flatData.pricePerMonth} £</span></span>
+								<span>Per week: <span class="user-flats__price user-flats__price--per-week">${flatData.pricePerWeek} £</span></span>
+							</div>
+						</div>
+					</div>
+					<div class="user-flats__half-content-box padding-y-medium">
+						<div class="user-flats__top-box">
+							<div class="user-flats__info-box">
+									<h3 class="user-flats__title">Rooms: ${flatData.rooms}, City: ${flatData.city}</h3>
+									<span class="user-flats__adress">Address: ${flatData.address}</span>
+									<p class="user-flats__description">Opis: ${flatData.description}</p>
+								</div>
+							</div>
+							<div class="user-flats__bottom-box">
+								<span class="user-flats__contact-box">${flatData.userEmail}</span>
+						</div>
+					</div>
+				</div>
+		`;
 
+		flatsContainer.innerHTML += singleFlatTemplateHTML;
 	}
 
 	editSingleFlatOnMyAccountPage() {
 
 	}
 
-	removeSingleFlatOnMyAccountPage() {
+	removeSingleFlatOnMyAccountPage(e) {
+		const flatsContainer = document.querySelector('#user-flats-container'),
+			flatToolsContainer = e.target.parentElement,
+			flatContainer = flatToolsContainer.parentElement;
 
+		flatsContainer.parentNode.removeChild(flatContainer);
 	}
 
 	resetAddFlatFields() {
