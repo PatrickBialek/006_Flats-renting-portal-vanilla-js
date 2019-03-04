@@ -721,7 +721,8 @@ input[type=range]:focus::-ms-fill-upper {
     max-width: 1200px; }
   .user-flats__user-tools {
     display: flex;
-    justify-content: flex-start; }
+    justify-content: flex-start;
+    padding: 0rem 1rem 0rem; }
   .user-flats__edit, .user-flats__remove {
     color: #fff;
     transition: all .3s ease-in-out;
@@ -737,9 +738,11 @@ input[type=range]:focus::-ms-fill-upper {
       background-color: #cf333f; }
   .user-flats__single-flat {
     width: 100%;
-    margin: .75rem auto 0rem; }
-  .user-flats__half-content-box {
-    width: 50%;
+    margin: .75rem auto 0rem;
+    padding: 1rem;
+    padding-bottom: 1.5rem; }
+  .user-flats__content-box {
+    width: 100%;
     display: flex;
     flex-direction: column;
     text-align: left; }
@@ -758,8 +761,6 @@ input[type=range]:focus::-ms-fill-upper {
     text-align: left;
     flex-direction: column;
     justify-content: flex-start; }
-    .user-flats__bottom-box div {
-      padding: 0rem 1.5rem .6rem; }
     .user-flats__bottom-box span {
       font-size: 1.4rem; }
   .user-flats__contact-box {

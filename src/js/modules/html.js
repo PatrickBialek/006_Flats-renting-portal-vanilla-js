@@ -232,36 +232,26 @@ class HTML {
 					<button class="btn user-flats__remove">Remove</button>
 				</div>
 				<div class="user-flats__single-flat">
-					<div class="user-flats__half-content-box padding-bottom-medium">
+					<div class="user-flats__content-box">
 						<div class="user-flats__top-box">
-							<div class="user-flats__single-image-box">
-								<img src="" alt="" class="flats__image">
-							</div>
-							<div class="user-flats__single-image-box">
-								<img src="" alt="" class="flats__image">
+							<div class="user-flats__info-box">
+								<h3 class="user-flats__title">Rooms: ${flat.rooms}, City: ${flat.city}</h3>
+								<span class="user-flats__adress">Address: ${flat.address}</span>
+								<p class="user-flats__description">Opis: ${flat.description}</p>
 							</div>
 						</div>
 						<div class="user-flats__bottom-box">
+							<span class="user-flats__contact-box">${flat.userEmail}</span>
+						</div>
+						<div class="user-flats__bottom-box">
 							<div>
-								<span>Per month: <span class="user-flats__price user-flats__price--per-month">${flat.pricePerMonth} £</span></span>
+								<span>Per month: <span class="user-flats__price user-flats__price--per-month">${flat.pricePerMonth} £, </span></span>
 								<span>Per week: <span class="user-flats__price user-flats__price--per-week">${flat.pricePerWeek} £</span></span>
 							</div>
 						</div>
 					</div>
-					<div class="user-flats__half-content-box padding-y-medium">
-						<div class="user-flats__top-box">
-							<div class="user-flats__info-box">
-									<h3 class="user-flats__title">Rooms: ${flat.rooms}, City: ${flat.city}</h3>
-									<span class="user-flats__adress">Address: ${flat.address}</span>
-									<p class="user-flats__description">Opis: ${flat.description}</p>
-								</div>
-							</div>
-							<div class="user-flats__bottom-box">
-								<span class="user-flats__contact-box">${flat.userEmail}</span>
-						</div>
-					</div>
 				</div>
-		`;
+			`;
 
 		flatsContainer.innerHTML += singleFlatTemplateHTML;
 	}

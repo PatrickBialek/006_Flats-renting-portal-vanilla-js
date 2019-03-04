@@ -37,6 +37,7 @@
 	&__user-tools {
 		display: flex;
 		justify-content: flex-start;
+		padding: 0rem 1rem 0rem;
 	}
 
 	&__edit,
@@ -66,10 +67,12 @@
 	&__single-flat {
 		width: 100%;
 		margin: .75rem auto 0rem;
+		padding: 1rem;
+		padding-bottom: 1.5rem;
 	}
 
-	&__half-content-box {
-		width: 50%;
+	&__content-box {
+		width: 100%;
 		display: flex;
 		flex-direction: column;
 		text-align: left;
@@ -96,10 +99,6 @@
 		text-align: left;
 		flex-direction: column;
 		justify-content: flex-start;
-
-		& div {
-			padding: 0rem 1.5rem .6rem;
-		}
 
 		& span {
 			font-size: 1.4rem;

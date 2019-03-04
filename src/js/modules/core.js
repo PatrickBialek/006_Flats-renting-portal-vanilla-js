@@ -197,14 +197,8 @@ class CORE {
 	}
 
 	removeUserFlatFromDataBase(id) {
-		console.log(id);
-
 		const flat = firebase.database().ref("flats/" + id);
 		flat.remove();
-
-		/*flat.on("child_removed", (data) => {
-			deleteComment(postElement, data.key);
-		});*/
 	}
 
 	addUserFlatToDataBase(city, address, description, rooms, pricePerMonth, propertyType, deposit, houseShare) {
