@@ -4,9 +4,9 @@ import {
 	core
 } from '../app.js';
 
-import {
+/*import {
 	flatsContainer
-} from '../modules/search';
+} from './search';*/
 
 
 // Here are placed html templates 

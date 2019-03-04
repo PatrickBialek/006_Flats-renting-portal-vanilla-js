@@ -5,7 +5,8 @@ import "firebase/database";
 
 import {
 	html,
-	core
+	core,
+	search
 } from "../app.js";
 
 // Here is placed logic responsible for account servicing
@@ -231,6 +232,63 @@ class CORE {
 	}
 
 	// Main page
+	addListenersToSearchField(flats) {
+		const flatsContainer = document.querySelector("#flats-container");
+
+		if (flatsContainer) {
+
+			const city = document.querySelector("#city"),
+				rooms = document.querySelector("#rooms"),
+				min = document.querySelector("#min"),
+				max = document.querySelector("#max"),
+				propertyType = document.querySelector("#property-type"),
+				deposit = document.querySelector("#deposit"),
+				houseShare = document.querySelector("#house-share"),
+				searchFields = {
+					city: "",
+					rooms: "",
+					price: "",
+					propertyType: "",
+					deposit: "",
+					houseShare: ""
+				};
+
+			city.addEventListener("input", e => {
+				searchFields.city = e.target.value;
+				search.filterFlats(flats);
+			});
+
+			rooms.addEventListener("input", e => {
+				searchFields.rooms = Number(e.target.value);
+				search.filterFlats(flats);
+			});
+
+			min.addEventListener("input", e => {
+				search.filterFlats(flats);
+			});
+
+			max.addEventListener("input", e => {
+				searchFields.max = Number(e.target.value);
+				search.filterFlats(flats);
+			});
+
+			propertyType.addEventListener("input", e => {
+				searchFields.propertyType = Number(e.target.value);
+				search.filterFlats(flats);
+			});
+
+			deposit.addEventListener("input", e => {
+				searchFields.deposit = e.target.value;
+				search.filterFlats(flats);
+			});
+
+			houseShare.addEventListener("input", e => {
+				searchFields.houseShare = e.target.value;
+				search.filterFlats(flats);
+			});
+		}
+	}
+
 	getFlatsFromDataBase() {
 		const flat = firebase.database().ref("flats/"),
 			flats = [],
@@ -240,15 +298,17 @@ class CORE {
 
 		flat.on("child_added", (data) => {
 			const flatData = data.val();
-			flats.push(flatData);
 
 			if (flatData.readyToPublish === true) {
 				html.flatsTemplateOnMainPage(flatData, flatsContainer);
+				flats.push(flatData);
 			}
 		});
+
+		core.addListenersToSearchField(flats);
 	}
 }
 
 export {
-	CORE
+	CORE,
 };

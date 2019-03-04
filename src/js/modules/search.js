@@ -1,74 +1,94 @@
 import {
-	SEARCH
-} from './search-modules/1-search-module';
-
-import {
-	core
+	html
 } from "../app";
 
 
-const flatsContainer = document.querySelector("#flats-container");
-const search = new SEARCH();
+class SEARCH {
+	showFlats(flats) {
+		html.cleanFlatsContainerMainPage();
+		html.flatsTemplateOnMainPage(flats);
+	}
 
-// Check if main page is visiting
-if (flatsContainer) {
+	noResult() {
+		html.cleanFlatsContainerMainPage();
+		html.noResultContainerMainPage();
+	}
 
-	const city = document.querySelector("#city"),
-		rooms = document.querySelector("#rooms"),
-		min = document.querySelector("#min"),
-		max = document.querySelector("#max"),
-		propertyType = document.querySelector("#property-type"),
-		deposit = document.querySelector("#deposit"),
-		houseShare = document.querySelector("#house-share"),
-		searchFields = {
-			city: "",
-			rooms: "",
-			price: "",
-			propertyType: "",
-			deposit: "",
-			houseShare: ""
-		};
+	filterFlats(flats) {
+		console.log(flats);
+		const result = flats
+			.filter(filterCity)
+			.filter(filterRooms)
+			.filter(filterMinPrice)
+			.filter(filterMaxPrice)
+			.filter(filterPropertyType)
+			.filter(filterDeposit)
+			.filter(filterHouseShare);
 
-	document.addEventListener("DOMContentLoaded", () => {
-		core.getFlatsFromDataBase();
-	});
+		if (result.length) {
+			html.flatsTemplateOnMainPage(flats);
+		} else {
+			html.noResultContainerMainPage();
+		}
+	}
 
-	city.addEventListener("input", e => {
-		searchFields.city = e.target.value;
-		search.filterFlats();
-	});
+	filterCity(flat) {
+		if (searchFields.flat) {
+			return flat.city === searchFields.city;
+		} else {
+			return flat;
+		}
+	}
 
-	rooms.addEventListener("input", e => {
-		searchFields.rooms = Number(e.target.value);
-		search.filterFlats();
-	});
+	filterRooms(flat) {
+		if (searchFields.rooms) {
+			return flat.rooms === searchFields.rooms;
+		} else {
+			return flat;
+		}
+	}
 
-	min.addEventListener("input", e => {
-		search.filterFlats();
-	});
+	filterMinPrice(flat) {
+		if (searchFields.min) {
+			return flat.price >= searchFields.min;
+		} else {
+			return flat;
+		}
+	}
 
-	max.addEventListener("input", e => {
-		searchFields.max = Number(e.target.value);
-		search.filterFlats();
-	});
+	filterMaxPrice(flat) {
+		if (searchFields.max) {
+			return flat.price <= searchFields.max;
+		} else {
+			return flat;
+		}
+	}
 
-	propertyType.addEventListener("input", e => {
-		searchFields.propertyType = Number(e.target.value);
-		search.filterFlats();
-	});
+	filterPropertyType(flat) {
+		if (searchFields.propertyType) {
+			return flat.propertyType === searchFields.propertyType;
+		} else {
+			return car;
+		}
+	}
 
-	deposit.addEventListener("input", e => {
-		searchFields.deposit = e.target.value;
-		search.filterFlats();
-	});
+	filterDeposit(flat) {
+		if (searchFields.deposit) {
+			return flat.deposit === searchFields.deposit;
+		} else {
+			return flat;
+		}
+	}
 
-	houseShare.addEventListener("input", e => {
-		searchFields.houseShare = e.target.value;
-		search.filterFlats();
-	});
+	filterHouseShare(flat) {
+		if (searchFields.houseShare) {
+			return flat.houseShare === searchFields.houseShare;
+		} else {
+			return flat;
+		}
+	}
 }
 
 export {
-	search,
-	flatsContainer
+	SEARCH
 };
