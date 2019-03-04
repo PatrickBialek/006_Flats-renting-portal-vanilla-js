@@ -196,17 +196,26 @@ class CORE {
 		});
 	}
 
-	removeUserFlatFromDataBase() {
-		console.log("remove flat");
+	removeUserFlatFromDataBase(id) {
+		console.log(id);
+
+		const flat = firebase.database().ref("flats/" + id);
+		flat.remove();
+
+		/*flat.on("child_removed", (data) => {
+			deleteComment(postElement, data.key);
+		});*/
 	}
 
 	addUserFlatToDataBase(city, address, description, rooms, pricePerMonth, propertyType, deposit, houseShare) {
 		const key = Object.keys(sessionStorage)[0],
 			userSession = JSON.parse(sessionStorage.getItem(key)),
 			userEmail = userSession.email,
-			pricePerWeek = (Number(pricePerMonth) / 4);
+			pricePerWeek = (Number(pricePerMonth) / 4),
+			id = Date.now() + Math.floor(Math.random() * 100);
 
 		const flat = {
+			id: id,
 			city: city,
 			address: address,
 			description: description,
@@ -220,8 +229,7 @@ class CORE {
 			readyToPublish: false
 		};
 
-		const uniqueKey = Date.now() + Math.floor(Math.random() * 100),
-			db = firebase.database().ref("flats/" + uniqueKey);
+		const db = firebase.database().ref("flats/" + id);
 
 		db.set(flat);
 		html.resetAddFlatFields();

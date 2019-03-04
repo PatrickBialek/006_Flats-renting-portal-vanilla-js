@@ -224,9 +224,9 @@ class HTML {
 		priceContainer.innerHTML = price;
 	}
 
-	singleFlatTemplateOnMyAccountPage(flatData, flatsContainer) {
+	singleFlatTemplateOnMyAccountPage(flat, flatsContainer) {
 		const singleFlatTemplateHTML = `
-			<div class="user-flats__single-flat-container" id="">
+			<div class="user-flats__single-flat-container" id="${flat.id}">
 				<div class="user-flats__user-tools">
 					<button class="btn user-flats__edit">Edit</button>
 					<button class="btn user-flats__remove">Remove</button>
@@ -243,21 +243,21 @@ class HTML {
 						</div>
 						<div class="user-flats__bottom-box">
 							<div>
-								<span>Per month: <span class="user-flats__price user-flats__price--per-month">${flatData.pricePerMonth} £</span></span>
-								<span>Per week: <span class="user-flats__price user-flats__price--per-week">${flatData.pricePerWeek} £</span></span>
+								<span>Per month: <span class="user-flats__price user-flats__price--per-month">${flat.pricePerMonth} £</span></span>
+								<span>Per week: <span class="user-flats__price user-flats__price--per-week">${flat.pricePerWeek} £</span></span>
 							</div>
 						</div>
 					</div>
 					<div class="user-flats__half-content-box padding-y-medium">
 						<div class="user-flats__top-box">
 							<div class="user-flats__info-box">
-									<h3 class="user-flats__title">Rooms: ${flatData.rooms}, City: ${flatData.city}</h3>
-									<span class="user-flats__adress">Address: ${flatData.address}</span>
-									<p class="user-flats__description">Opis: ${flatData.description}</p>
+									<h3 class="user-flats__title">Rooms: ${flat.rooms}, City: ${flat.city}</h3>
+									<span class="user-flats__adress">Address: ${flat.address}</span>
+									<p class="user-flats__description">Opis: ${flat.description}</p>
 								</div>
 							</div>
 							<div class="user-flats__bottom-box">
-								<span class="user-flats__contact-box">${flatData.userEmail}</span>
+								<span class="user-flats__contact-box">${flat.userEmail}</span>
 						</div>
 					</div>
 				</div>
@@ -271,11 +271,17 @@ class HTML {
 	}
 
 	removeSingleFlatOnMyAccountPage(e) {
-		const flatsContainer = document.querySelector('#user-flats-container'),
-			flatToolsContainer = e.target.parentElement,
-			flatContainer = flatToolsContainer.parentElement;
+		const r = confirm("Are you sure?");
 
-		flatsContainer.parentNode.removeChild(flatContainer);
+		if (r) {
+			const flatsContainer = document.querySelector('#user-flats-container'),
+				flatToolsContainer = e.target.parentElement,
+				flatContainer = flatToolsContainer.parentElement,
+				id = flatContainer.id;
+
+			flatsContainer.removeChild(flatContainer);
+			core.removeUserFlatFromDataBase(id);
+		}
 	}
 
 	resetAddFlatFields() {
