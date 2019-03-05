@@ -4,11 +4,6 @@ import {
 	core
 } from '../app.js';
 
-/*import {
-	flatsContainer
-} from './search';*/
-
-
 // Here are placed html templates 
 class HTML {
 	addFlatTemplate() {

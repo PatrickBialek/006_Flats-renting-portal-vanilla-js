@@ -6,12 +6,8 @@ import {
 import {
 	HTML
 } from './modules/html.js';
-import {
-	SEARCH
-} from './modules/search.js';
 
 const html = new HTML(),
-	search = new SEARCH(),
 	core = new CORE(),
 	main = document.querySelector('#account-area-main'),
 	mainAccountArea = document.querySelector('#account-area-main'),
@@ -32,6 +28,5 @@ if (mainPageflatsContainer) {
 export {
 	main,
 	html,
-	core,
-	search
+	core
 };

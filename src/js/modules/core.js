@@ -5,8 +5,7 @@ import "firebase/database";
 
 import {
 	html,
-	core,
-	search
+	core
 } from "../app.js";
 
 // Here is placed logic responsible for account servicing
@@ -24,7 +23,7 @@ class CORE {
 		firebase.initializeApp(config);
 	}
 
-	// User account
+	// User account functions
 	checkIfUserIsLogIn() {
 		firebase.auth().onAuthStateChanged(user => {
 			if (user) {
@@ -183,12 +182,12 @@ class CORE {
 
 	getUserFlatsFromDataBase() {
 		const flat = firebase.database().ref("flats/"),
-			userFlatsContainer = document.querySelector('#user-flats-container'),
+			userFlatsContainer = document.querySelector("#user-flats-container"),
 			key = Object.keys(sessionStorage)[0],
 			userSession = JSON.parse(sessionStorage.getItem(key)),
 			userEmail = userSession.email;
 
-		flat.on("child_added", (data) => {
+		flat.on("child_added", data => {
 			const flatData = data.val();
 
 			if (flatData.userEmail === userEmail) {
@@ -197,16 +196,11 @@ class CORE {
 		});
 	}
 
-	removeUserFlatFromDataBase(id) {
-		const flat = firebase.database().ref("flats/" + id);
-		flat.remove();
-	}
-
 	addUserFlatToDataBase(city, address, description, rooms, pricePerMonth, propertyType, deposit, houseShare) {
 		const key = Object.keys(sessionStorage)[0],
 			userSession = JSON.parse(sessionStorage.getItem(key)),
 			userEmail = userSession.email,
-			pricePerWeek = (Number(pricePerMonth) / 4),
+			pricePerWeek = Number(pricePerMonth) / 4,
 			id = Date.now() + Math.floor(Math.random() * 100);
 
 		const flat = {
@@ -231,60 +225,65 @@ class CORE {
 		html.flatHasBeenAdded();
 	}
 
+	removeUserFlatFromDataBase(id) {
+		const flat = firebase.database().ref("flats/" + id);
+		flat.remove();
+	}
+
 	// Main page
 	addListenersToSearchField(flats) {
 		const flatsContainer = document.querySelector("#flats-container");
 
 		if (flatsContainer) {
-
 			const city = document.querySelector("#city"),
 				rooms = document.querySelector("#rooms"),
 				min = document.querySelector("#min"),
 				max = document.querySelector("#max"),
 				propertyType = document.querySelector("#property-type"),
 				deposit = document.querySelector("#deposit"),
-				houseShare = document.querySelector("#house-share"),
-				searchFields = {
-					city: "",
-					rooms: "",
-					price: "",
-					propertyType: "",
-					deposit: "",
-					houseShare: ""
-				};
+				houseShare = document.querySelector("#house-share");
+
+			const searchFields = {
+				city: "",
+				rooms: "",
+				price: "",
+				propertyType: "",
+				deposit: "",
+				houseShare: ""
+			};
 
 			city.addEventListener("input", e => {
 				searchFields.city = e.target.value;
-				search.filterFlats(flats);
+				core.filteringFlatsOnMainPage(flats, searchFields);
 			});
 
 			rooms.addEventListener("input", e => {
 				searchFields.rooms = Number(e.target.value);
-				search.filterFlats(flats);
+				core.filteringFlatsOnMainPage(flats);
 			});
 
 			min.addEventListener("input", e => {
-				search.filterFlats(flats);
+				core.filteringFlatsOnMainPage(flats);
 			});
 
 			max.addEventListener("input", e => {
 				searchFields.max = Number(e.target.value);
-				search.filterFlats(flats);
+				core.filteringFlatsOnMainPage(flats);
 			});
 
 			propertyType.addEventListener("input", e => {
 				searchFields.propertyType = Number(e.target.value);
-				search.filterFlats(flats);
+				core.filteringFlatsOnMainPage(flats);
 			});
 
 			deposit.addEventListener("input", e => {
 				searchFields.deposit = e.target.value;
-				search.filterFlats(flats);
+				core.filteringFlatsOnMainPage(flats);
 			});
 
 			houseShare.addEventListener("input", e => {
 				searchFields.houseShare = e.target.value;
-				search.filterFlats(flats);
+				core.filteringFlatsOnMainPage(flats);
 			});
 		}
 	}
@@ -292,11 +291,11 @@ class CORE {
 	getFlatsFromDataBase() {
 		const flat = firebase.database().ref("flats/"),
 			flats = [],
-			flatsContainer = document.querySelector('#flats-container');
+			flatsContainer = document.querySelector("#flats-container");
 
 		flatsContainer.innerHTML = "";
 
-		flat.on("child_added", (data) => {
+		flat.on("child_added", data => {
 			const flatData = data.val();
 
 			if (flatData.readyToPublish === true) {
@@ -307,8 +306,83 @@ class CORE {
 
 		core.addListenersToSearchField(flats);
 	}
+
+	filteringFlatsOnMainPage(flats) {
+		const result = flats
+			.filter(core.filterCity)
+			.filter(core.filterRooms)
+			.filter(core.filterMinPrice)
+			.filter(core.filterMaxPrice)
+			.filter(core.filterPropertyType)
+			.filter(core.filterDeposit)
+			.filter(core.filterHouseShare);
+
+		if (result.length) {
+			html.flatsTemplateOnMainPage(flats);
+		} else {
+			html.noResultContainerMainPage();
+		}
+	}
+
+	filterCity(flat) {
+		console.log(searchFields);
+
+		if (searchFields.city) {
+			return flat.city === searchFields.city;
+		} else {
+			return flat;
+		}
+	}
+
+	filterRooms(flat) {
+		if (searchFields.rooms) {
+			return flat.rooms === searchFields.rooms;
+		} else {
+			return flat;
+		}
+	}
+
+	filterMinPrice(flat) {
+		if (searchFields.min) {
+			return flat.price >= searchFields.min;
+		} else {
+			return flat;
+		}
+	}
+
+	filterMaxPrice(flat) {
+		if (searchFields.max) {
+			return flat.price <= searchFields.max;
+		} else {
+			return flat;
+		}
+	}
+
+	filterPropertyType(flat) {
+		if (searchFields.propertyType) {
+			return flat.propertyType === searchFields.propertyType;
+		} else {
+			return car;
+		}
+	}
+
+	filterDeposit(flat) {
+		if (searchFields.deposit) {
+			return flat.deposit === searchFields.deposit;
+		} else {
+			return flat;
+		}
+	}
+
+	filterHouseShare(flat) {
+		if (searchFields.houseShare) {
+			return flat.houseShare === searchFields.houseShare;
+		} else {
+			return flat;
+		}
+	}
 }
 
 export {
-	CORE,
+	CORE
 };

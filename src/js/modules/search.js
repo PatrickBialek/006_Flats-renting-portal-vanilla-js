@@ -1,5 +1,6 @@
-import {
-	html
+/*import {
+	html,
+	search
 } from "../app";
 
 
@@ -15,10 +16,9 @@ class SEARCH {
 	}
 
 	filterFlats(flats) {
-		console.log(flats);
 		const result = flats
-			.filter(filterCity)
-			.filter(filterRooms)
+			.filter(search.filterCity)
+			.filter(search.filterRooms)
 			.filter(filterMinPrice)
 			.filter(filterMaxPrice)
 			.filter(filterPropertyType)
@@ -33,7 +33,9 @@ class SEARCH {
 	}
 
 	filterCity(flat) {
-		if (searchFields.flat) {
+		console.log(searchFields);
+
+		if (searchFields.city) {
 			return flat.city === searchFields.city;
 		} else {
 			return flat;
@@ -91,4 +93,4 @@ class SEARCH {
 
 export {
 	SEARCH
-};
+};*/
