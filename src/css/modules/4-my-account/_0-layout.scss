@@ -18,6 +18,18 @@
 		width: 100%;
 		padding: 3rem 1rem 5rem;
 		align-items: baseline;
+
+		& .account-area__2-of-3 .account-area__title h2 {
+			margin-left: 3rem;
+
+			@include smallScreen {
+				margin-left: 0;
+			}
+		}
+
+		@include smallScreen {
+			flex-direction: column;
+		}
 	}
 
 	&__1-of-3,
@@ -27,16 +39,30 @@
 
 	&__1-of-3 {
 		flex: 1;
+
+		@include smallScreen {
+			width: 100%;
+			align-items: center;
+		}
 	}
 
 	&__2-of-3 {
 		flex-direction: column;
 		flex: 2.5;
+
+		@include mediumScreen {
+			flex: 1.5;
+		}
 	}
 
 	&__title {
 		margin-bottom: 1.5rem;
 		padding-left: 2px;
+
+		@include smallScreen {
+			padding-left: 0px;
+			text-align: center;
+		}
 
 		& h2 {
 			color: red;

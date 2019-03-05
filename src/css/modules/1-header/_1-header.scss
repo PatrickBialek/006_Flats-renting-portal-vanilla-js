@@ -8,6 +8,14 @@
 	justify-content: space-between;
 	align-items: center;
 
+	@include smallScreen {
+		padding: 2.5rem 1rem;
+	}
+
+	@include smallScreen {
+		background-color: $green;
+	}
+
 	&--green {
 		background-color: $green;
 	}
@@ -15,6 +23,12 @@
 	&,
 	&__container {
 		display: flex;
+
+		& h1 {
+			@include smallScreen {
+				font-size: 1.3rem;
+			}
+		}
 	}
 
 	&__container {

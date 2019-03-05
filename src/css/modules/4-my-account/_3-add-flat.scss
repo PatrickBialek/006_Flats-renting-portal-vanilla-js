@@ -7,6 +7,12 @@
 	border-radius: 16px;
 	flex: 1;
 
+	@include smallScreen {
+		width: 80%;
+		max-width: 400px;
+		margin-bottom: 4rem;
+	}
+
 	&,
 	&__row {
 		display: flex;

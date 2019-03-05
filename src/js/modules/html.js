@@ -162,7 +162,7 @@ class HTML {
 	userFlats() {
 		const flatsContainerTemplate = `
 			<div class="account-area__2-of-3">
-				<div class="account-area__title margin-left-huge">
+				<div class="account-area__title">
 					<h2>Your flats:</h2>
 				</div>
 				<div class="user-flats" id="user-flats-container">
@@ -251,7 +251,7 @@ class HTML {
 		flatsContainer.innerHTML += singleFlatTemplateHTML;
 	}
 
-	editSingleFlatOnMyAccountPage() {
+	editSingleFlatTemplateOnMyAccountPage() {
 
 	}
 
@@ -346,13 +346,13 @@ class HTML {
 		});
 	}
 
-	noResultContainerMainPage() {
+	noResultTemplateMainPage() {
 		const flatsContainer = document.querySelector('#flats-container');
 
 		const noResultHTML = `
 			<div class="no-result">
 				<span class="no-result__title">No results found</span>
-				<span class="no-result__description">You can change filters if you want find a car</span>
+				<span class="no-result__description">You can change filters if you want find a </span>
 			</div>
 		`;
 

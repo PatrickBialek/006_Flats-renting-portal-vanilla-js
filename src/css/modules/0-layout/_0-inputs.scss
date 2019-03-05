@@ -8,10 +8,20 @@
 
 	&--bigger {
 		width: 246.5px;
+
+		@include smallScreen {
+			width: 100%;
+			max-width: 450px;
+		}
 	}
 
 	&--smaller {
 		width: 180px;
+
+		@include smallScreen {
+			width: 100%;
+			max-width: 450px;
+		}
 	}
 }
 
@@ -143,7 +153,7 @@ input[type=range]:focus::-ms-fill-upper {
 	background: $light-grey;
 }
 
-@media (max-width: 880px) {
+/*@media (max-width: 880px) {
 	.select {
 		&--bigger {
 			width: 100%;
@@ -153,4 +163,4 @@ input[type=range]:focus::-ms-fill-upper {
 			width: 100%;
 		}
 	}
-}
+}*/

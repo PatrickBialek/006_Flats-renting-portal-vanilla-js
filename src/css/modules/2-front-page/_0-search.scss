@@ -9,6 +9,18 @@
 	clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 0% 100%);
 	background-color: #e9e9eb;
 
+	@include tinyScreen {
+		padding: 10rem 2rem;
+		clip-path: none;
+		text-align: center;
+	}
+
+	& .heading-secondary {
+		@include tinyScreen {
+			font-size: 2.55rem;
+		}
+	}
+
 	&,
 	&__box,
 	&__form,
@@ -34,28 +46,28 @@
 		max-width: 1200px;
 		justify-content: center;
 		margin-bottom: 2rem;
+
+		@include smallScreen {
+			flex-direction: column;
+			align-items: center;
+			margin-bottom: 0rem;
+		}
 	}
 
 	&__box {
 		margin: 0rem 1rem;
+
+		@include smallScreen {
+			margin-bottom: 2rem;
+			width: 100%;
+			align-items: center;
+			text-align: left;
+		}
 	}
 
 	&__label {
 		font-size: 1.6rem;
 		margin-left: 2px;
 		margin-bottom: 4px;
-	}
-}
-
-@media (max-width: 880px) {
-	.search {
-		&__row {
-			flex-direction: column;
-			margin-bottom: 0rem;
-		}
-
-		&__box {
-			margin-bottom: 1rem;
-		}
 	}
 }

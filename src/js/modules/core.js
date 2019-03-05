@@ -366,7 +366,7 @@ class CORE {
 		if (result.length) {
 			html.flatsFilteringTemplateMainPage(result);
 		} else {
-			html.noResultContainerMainPage();
+			html.noResultTemplateMainPage();
 		}
 	}
 }
