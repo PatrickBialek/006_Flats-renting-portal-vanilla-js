@@ -263,6 +263,7 @@ class CORE {
 			});
 
 			min.addEventListener("input", e => {
+				searchFields.min = Number(e.target.value);
 				core.filteringFlatsOnMainPage(flats, searchFields);
 			});
 
@@ -328,14 +329,14 @@ class CORE {
 			})
 			.filter((flat) => {
 				if (searchFields.min) {
-					return flat.price >= searchFields.min;
+					return flat.pricePerMonth >= searchFields.min;
 				} else {
 					return flat;
 				}
 			})
 			.filter((flat) => {
 				if (searchFields.max) {
-					return flat.price <= searchFields.max;
+					return flat.pricePerMonth <= searchFields.max;
 				} else {
 					return flat;
 				}
@@ -361,7 +362,6 @@ class CORE {
 					return flat;
 				}
 			})
-
 
 		if (result.length) {
 			html.flatsFilteringTemplateMainPage(result);

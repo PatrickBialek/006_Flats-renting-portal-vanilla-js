@@ -1,11 +1,12 @@
-//import "./modules/search";
-
 import {
 	CORE
 } from './modules/core.js';
 import {
 	HTML
 } from './modules/html.js';
+import {
+	ANIMATIONS
+} from './animations/animations';
 
 const html = new HTML(),
 	core = new CORE(),
