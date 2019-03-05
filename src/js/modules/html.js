@@ -294,7 +294,7 @@ class HTML {
 	}
 
 	// Main page HTML templates
-	flatsTemplateOnMainPage(flatData, flatsContainer) {
+	flatTemplateOnMainPage(flat, flatsContainer) {
 		const singleFlatTemplateHTML = `
 			<div class="flats__single-flat">
 				<div class="flats__half-content-box padding-bottom-medium">
@@ -308,21 +308,21 @@ class HTML {
 					</div>
 					<div class="flats__bottom-box">
 						<div>
-							<span>Per month: <span class="flats__price flats__price--per-month">${flatData.pricePerMonth} £</span></span>
-							<span>Per week: <span class="flats__price flats__price--per-week">${flatData.pricePerWeek} £</span></span>
+							<span>Per month: <span class="flats__price flats__price--per-month">${flat.pricePerMonth} £</span></span>
+							<span>Per week: <span class="flats__price flats__price--per-week">${flat.pricePerWeek} £</span></span>
 						</div>
 					</div>
 				</div>
 				<div class="flats__half-content-box padding-y-medium">
 					<div class="flats__top-box">
 						<div class="flats__info-box">
-								<h3 class="flats__title">Rooms: ${flatData.rooms}, City: ${flatData.city}</h3>
-								<span class="flats__adress">Address: ${flatData.address}</span>
-								<p class="flats__description">Opis: ${flatData.description}</p>
+								<h3 class="flats__title">Rooms: ${flat.rooms}, City: ${flat.city}</h3>
+								<span class="flats__adress">Address: ${flat.address}</span>
+								<p class="flats__description">Opis: ${flat.description}</p>
 							</div>
 						</div>
 						<div class="flats__bottom-box">
-							<span class="flats__contact-box">${flatData.userEmail}</span>
+							<span class="flats__contact-box">${flat.userEmail}</span>
 					</div>
 				</div>
 			</div>
@@ -331,11 +331,24 @@ class HTML {
 		flatsContainer.innerHTML += singleFlatTemplateHTML;
 	}
 
-	cleanFlatsContainerMainPage() {
-		flatsContainer.innerHTML = null;
+	cleanFlatsContainerMainPage(flatsContainer) {
+		flatsContainer.innerHTML = "";
+	}
+
+	flatsFilteringTemplateMainPage(flats) {
+		const flatsContainer = document.querySelector('#flats-container');
+		html.cleanFlatsContainerMainPage(flatsContainer);
+
+		console.log(flats);
+
+		flats.forEach(flat => {
+			html.flatTemplateOnMainPage(flat, flatsContainer);
+		});
 	}
 
 	noResultContainerMainPage() {
+		const flatsContainer = document.querySelector('#flats-container');
+
 		const noResultHTML = `
 			<div class="no-result">
 				<span class="no-result__title">No results found</span>

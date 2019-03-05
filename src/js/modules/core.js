@@ -259,32 +259,34 @@ class CORE {
 
 			rooms.addEventListener("input", e => {
 				searchFields.rooms = Number(e.target.value);
-				core.filteringFlatsOnMainPage(flats);
+				core.filteringFlatsOnMainPage(flats, searchFields);
 			});
 
 			min.addEventListener("input", e => {
-				core.filteringFlatsOnMainPage(flats);
+				core.filteringFlatsOnMainPage(flats, searchFields);
 			});
 
 			max.addEventListener("input", e => {
 				searchFields.max = Number(e.target.value);
-				core.filteringFlatsOnMainPage(flats);
+				core.filteringFlatsOnMainPage(flats, searchFields);
 			});
 
 			propertyType.addEventListener("input", e => {
-				searchFields.propertyType = Number(e.target.value);
-				core.filteringFlatsOnMainPage(flats);
+				searchFields.propertyType = e.target.value;
+				core.filteringFlatsOnMainPage(flats, searchFields);
 			});
 
 			deposit.addEventListener("input", e => {
 				searchFields.deposit = e.target.value;
-				core.filteringFlatsOnMainPage(flats);
+				core.filteringFlatsOnMainPage(flats, searchFields);
 			});
 
 			houseShare.addEventListener("input", e => {
 				searchFields.houseShare = e.target.value;
-				core.filteringFlatsOnMainPage(flats);
+				core.filteringFlatsOnMainPage(flats, searchFields);
 			});
+
+			return searchFields;
 		}
 	}
 
@@ -296,35 +298,81 @@ class CORE {
 		flatsContainer.innerHTML = "";
 
 		flat.on("child_added", data => {
-			const flatData = data.val();
+			const flat = data.val();
 
-			if (flatData.readyToPublish === true) {
-				html.flatsTemplateOnMainPage(flatData, flatsContainer);
-				flats.push(flatData);
+			if (flat.readyToPublish === true) {
+				html.flatTemplateOnMainPage(flat, flatsContainer);
+				flats.push(flat);
 			}
 		});
 
 		core.addListenersToSearchField(flats);
 	}
 
-	filteringFlatsOnMainPage(flats) {
+	filteringFlatsOnMainPage(flats, searchFields) {
+		console.log(searchFields);
+
 		const result = flats
-			.filter(core.filterCity)
-			.filter(core.filterRooms)
-			.filter(core.filterMinPrice)
-			.filter(core.filterMaxPrice)
-			.filter(core.filterPropertyType)
-			.filter(core.filterDeposit)
-			.filter(core.filterHouseShare);
+			.filter((flat) => {
+				if (searchFields.city) {
+					return flat.city === searchFields.city
+				} else {
+					return flat;
+				}
+			})
+			.filter((flat) => {
+				if (searchFields.rooms) {
+					return flat.rooms === searchFields.rooms;
+				} else {
+					return flat;
+				}
+			})
+			.filter((flat) => {
+				if (searchFields.min) {
+					return flat.price >= searchFields.min;
+				} else {
+					return flat;
+				}
+			})
+			.filter((flat) => {
+				if (searchFields.max) {
+					return flat.price <= searchFields.max;
+				} else {
+					return flat;
+				}
+			})
+			.filter((flat) => {
+				if (searchFields.propertyType) {
+					return flat.propertyType === searchFields.propertyType;
+				} else {
+					return flat;
+				}
+			})
+			.filter((flat) => {
+				if (searchFields.deposit) {
+					return flat.deposit === searchFields.deposit;
+				} else {
+					return flat;
+				}
+			})
+			.filter((flat) => {
+				if (searchFields.houseShare) {
+					return flat.houseShare === searchFields.houseShare;
+				} else {
+					return flat;
+				}
+			})
+
+		//console.log(result);
 
 		if (result.length) {
-			html.flatsTemplateOnMainPage(flats);
+			html.flatsFilteringTemplateMainPage(result);
 		} else {
 			html.noResultContainerMainPage();
 		}
 	}
 
-	filterCity(flat) {
+	/*filterCity(flat) {
 		console.log(searchFields);
 
 		if (searchFields.city) {
@@ -380,7 +428,7 @@ class CORE {
 		} else {
 			return flat;
 		}
-	}
+	}*/
 }
 
 export {
