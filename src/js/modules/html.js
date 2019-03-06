@@ -306,7 +306,7 @@ class HTML {
 							</div>
 						</div>
 						<div class="flats__bottom-box">
-							<span class="flats__contact-box">${flat.userEmail}</span>
+							<span class="flats__contact-box flats__contact-box--email">${flat.userEmail}</span>
 						</div>
 						<div class="flats__bottom-box">
 						<div>
