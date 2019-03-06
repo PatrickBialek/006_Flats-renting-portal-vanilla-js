@@ -526,8 +526,15 @@ input[type=range]:focus::-ms-fill-upper {
     .flats__bottom-box span {
       font-size: 1.4rem; }
   .flats__contact-box {
-    color: #e63946;
-    font-weight: bold; }
+    font-weight: bold;
+    background-color: #e63946;
+    display: block;
+    color: #fff;
+    padding: 8px;
+    border-radius: 10px;
+    margin-top: 1rem;
+    max-width: 200px;
+    text-align: center; }
   .flats__price, .flats__title {
     color: #e63946;
     font-weight: bold; }
