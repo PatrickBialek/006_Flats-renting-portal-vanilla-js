@@ -10,6 +10,7 @@ import {
 
 const html = new HTML(),
 	core = new CORE(),
+	animations = new ANIMATIONS(),
 	main = document.querySelector('#account-area-main'),
 	mainAccountArea = document.querySelector('#account-area-main'),
 	mainPageflatsContainer = document.querySelector("#flats-container");
@@ -29,5 +30,6 @@ if (mainPageflatsContainer) {
 export {
 	main,
 	html,
-	core
+	core,
+	animations
 };
