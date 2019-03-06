@@ -184,8 +184,11 @@ class CORE {
 		const flat = firebase.database().ref("flats/");
 		const userFlatsContainer = document.querySelector("#user-flats-container");
 		const key = Object.keys(sessionStorage)[0];
+		console.log(key);
 		const userSession = JSON.parse(sessionStorage.getItem(key));
+		console.log(userSession);
 		const userEmail = userSession.email;
+		console.log(userSession.email);
 
 		flat.on("child_added", data => {
 			const flatData = data.val();
