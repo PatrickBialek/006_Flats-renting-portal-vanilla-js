@@ -38,7 +38,7 @@ class HTML {
 				</div>
 				<div class="add-flat__row">
 					<label class="add-flat__label" for="add-flat-description">Description (max 150 characters):</label>
-					<textarea class="add-flat__text-area" id="add-flat-description" maxlength="120"></textarea>
+					<textarea class="add-flat__text-area" id="add-flat-description" maxlength="250"></textarea>
 				</div>
 				<div class="add-flat__row">
 					<label class="add-flat__label" for="add-flat-rooms">Rooms:</label>
@@ -310,7 +310,7 @@ class HTML {
 						</div>
 						<div class="flats__bottom-box">
 						<div>
-							<span>Per month: <span class="flats__price flats__price--per-month">${flat.pricePerMonth} £</span></span>
+							<span>Per month: <span class="flats__price flats__price--per-month">${flat.pricePerMonth} £,</span></span>
 							<span>Per week: <span class="flats__price flats__price--per-week">${flat.pricePerWeek} £</span></span>
 						</div>
 					</div>
