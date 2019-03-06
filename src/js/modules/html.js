@@ -297,23 +297,7 @@ class HTML {
 	flatTemplateOnMainPage(flat, flatsContainer) {
 		const singleFlatTemplateHTML = `
 			<div class="flats__single-flat">
-				<div class="flats__half-content-box padding-bottom-medium">
-					<div class="flats__top-box">
-						<div class="flats__single-image-box">
-							<img src="" alt="" class="flats__image">
-						</div>
-						<div class="flats__single-image-box">
-							<img src="" alt="" class="flats__image">
-						</div>
-					</div>
-					<div class="flats__bottom-box">
-						<div>
-							<span>Per month: <span class="flats__price flats__price--per-month">${flat.pricePerMonth} £</span></span>
-							<span>Per week: <span class="flats__price flats__price--per-week">${flat.pricePerWeek} £</span></span>
-						</div>
-					</div>
-				</div>
-				<div class="flats__half-content-box padding-y-medium">
+				<div class="flats__content-box">
 					<div class="flats__top-box">
 						<div class="flats__info-box">
 								<h3 class="flats__title">Rooms: ${flat.rooms}, City: ${flat.city}</h3>
@@ -323,6 +307,12 @@ class HTML {
 						</div>
 						<div class="flats__bottom-box">
 							<span class="flats__contact-box">${flat.userEmail}</span>
+						</div>
+						<div class="flats__bottom-box">
+						<div>
+							<span>Per month: <span class="flats__price flats__price--per-month">${flat.pricePerMonth} £</span></span>
+							<span>Per week: <span class="flats__price flats__price--per-week">${flat.pricePerWeek} £</span></span>
+						</div>
 					</div>
 				</div>
 			</div>

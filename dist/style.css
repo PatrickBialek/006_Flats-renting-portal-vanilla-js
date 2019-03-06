@@ -498,12 +498,14 @@ input[type=range]:focus::-ms-fill-upper {
     background-color: #fff;
     max-width: 800px;
     box-sizing: border-box;
-    box-shadow: 1px 1px 8px 0px #d8d8d8; }
+    box-shadow: 1px 1px 8px 0px #d8d8d8;
+    padding: 1.5rem 2.5rem;
+    text-align: left; }
     @media (max-width: 550px) {
       .flats__single-flat {
         width: 100%; } }
-  .flats__half-content-box {
-    width: 50%;
+  .flats__half-content {
+    width: 100%;
     display: flex;
     flex-direction: column;
     text-align: left; }
@@ -523,7 +525,7 @@ input[type=range]:focus::-ms-fill-upper {
     flex-direction: column;
     justify-content: flex-start; }
     .flats__bottom-box div {
-      padding: 0rem 1.5rem .6rem; }
+      margin-top: 0.1rem; }
     .flats__bottom-box span {
       font-size: 1.4rem; }
   .flats__contact-box {
@@ -544,7 +546,7 @@ input[type=range]:focus::-ms-fill-upper {
     font-size: 1.8rem; }
   .flats__description {
     font-size: 1.5rem;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: "Noto Sans", sans-serif;
     color: #68686d; }
   .flats__adress {
     color: #53535f;
