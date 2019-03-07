@@ -7,8 +7,6 @@ import {
 // Here are placed html templates 
 class HTML {
 	addFlatTemplate() {
-
-		// User area HTML templates
 		const addFlatTemplateHTML = `
 		<div class="account-area__1-of-3">
 			<div class="account-area__title">
@@ -87,6 +85,8 @@ class HTML {
 				</div>
 				<input class="btn btn--green margin-bottom-medium" type="submit" id="add-flat" value="Add">
 			</div>
+			<div class="account-area__error-field" id="error-field"></div>
+			<div class="account-area__success-field" id="success-field"></div>
 		</div>
 		`;
 
@@ -198,6 +198,7 @@ class HTML {
 		html.addFlatTemplate();
 		html.userFlats();
 		core.getUserFlatsFromDataBase();
+
 		setTimeout(() => {
 			html.userSingedInListeners();
 		}, 1500);
@@ -221,6 +222,22 @@ class HTML {
 
 			errorField.appendChild(log);
 		})
+	}
+
+	cleanSuccess() {
+		const accountArea = document.querySelector('.account-area');
+		accountArea.classList.remove('add-success');
+	}
+
+	displaySuccess() {
+		const successField = document.querySelector('#success-field');
+		const accountArea = document.querySelector('.account-area');
+		const log = document.createElement('span');
+
+		successField.innerHTML = "";
+		accountArea.classList.add('add-success');
+		log.innerHTML = "Your flat has been added successfully. Now is waiting for acceptance from administration and then will be published."
+		successField.appendChild(log);
 	}
 
 	showUserFlatPrice() {
@@ -300,8 +317,15 @@ class HTML {
 		houseShare.value = "";
 	}
 
-	flatHasBeenAdded() {
-		console.log('Flat has been succesfully aded');
+	flatNotAdded() {
+		const errorField = document.querySelector('#error-field');
+		const accountArea = document.querySelector('.account-area');
+		const log = document.createElement('span');
+
+		errorField.innerHTML = "";
+		accountArea.classList.add('add-error');
+		log.innerText = "Yoy have to fill all fields in from.";
+		errorField.appendChild(log);
 	}
 
 	// Main page HTML templates

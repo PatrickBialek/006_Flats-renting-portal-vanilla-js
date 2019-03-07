@@ -25,6 +25,8 @@ class CORE {
 
 	// User account functions
 	checkIfUserIsLogIn() {
+		html.cleanErrors();
+
 		firebase.auth().onAuthStateChanged(user => {
 			if (user) {
 				const user = firebase.auth().currentUser;
@@ -41,6 +43,8 @@ class CORE {
 	}
 
 	signIn() {
+		html.cleanErrors();
+
 		const email = document.querySelector("#user-email").value,
 			password = document.querySelector("#user-password").value,
 			re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -71,6 +75,8 @@ class CORE {
 	}
 
 	signUp() {
+		html.cleanErrors();
+
 		const email = document.querySelector("#new-user-mail-adress").value,
 			password = document.querySelector("#new-user-password").value,
 			re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
@@ -98,7 +104,8 @@ class CORE {
 	}
 
 	continueWithFacebook() {
-		console.log("facebook");
+		html.cleanErrors();
+
 		const provider = new firebase.auth.FacebookAuthProvider(),
 			errors = [];
 
@@ -125,7 +132,8 @@ class CORE {
 	}
 
 	continueWithGoogle() {
-		console.log("google");
+		html.cleanErrors();
+
 		const provider = new firebase.auth.GoogleAuthProvider(),
 			errors = [];
 
@@ -152,6 +160,8 @@ class CORE {
 	}
 
 	signOut() {
+		html.cleanErrors();
+
 		firebase
 			.auth()
 			.signOut()
@@ -176,7 +186,11 @@ class CORE {
 		if (city != "" && address != "" && description != "" && rooms != "" && price != "" && propertyType != "" && deposit != "" && houseShare != "") {
 			core.addUserFlatToDataBase(city, address, description, rooms, price, propertyType, deposit, houseShare);
 		} else {
-			console.log("select all fields!");
+			html.flatNotAdded();
+
+			setTimeout(() => {
+				html.cleanErrors();
+			}, 3000);
 		}
 	}
 
@@ -228,7 +242,11 @@ class CORE {
 
 		db.set(flat);
 		html.resetAddFlatFields();
-		html.flatHasBeenAdded();
+		html.displaySuccess();
+
+		setTimeout(() => {
+			html.cleanSuccess();
+		}, 3000);
 	}
 
 	removeUserFlatFromDataBase(id) {

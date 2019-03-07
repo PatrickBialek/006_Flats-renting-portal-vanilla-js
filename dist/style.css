@@ -577,12 +577,6 @@ input[type=range]:focus::-ms-fill-upper {
   .no-result__description {
     font-size: 1.6rem; }
 
-/*@media (max-width: 880px) {
-	.no-result {
-		margin: 1rem;
-		padding: 2rem 0.5rem;
-	}
-}*/
 .footer {
   display: flex;
   justify-content: center;
@@ -613,6 +607,21 @@ input[type=range]:focus::-ms-fill-upper {
     text-align: center;
     padding: 0.5rem 1rem;
     background-color: red;
+    border-radius: 16px;
+    color: #fff;
+    margin-top: 1.5rem;
+    text-align: center;
+    display: none;
+    opacity: 0;
+    transition: all .2s ease-in-out; }
+  .account-area.add-success .account-area__success-field {
+    display: block;
+    opacity: 1; }
+  .account-area__success-field {
+    max-width: 450px;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    background-color: #008B00;
     border-radius: 16px;
     color: #fff;
     margin-top: 1.5rem;
