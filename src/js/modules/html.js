@@ -116,8 +116,8 @@ class HTML {
 				</div>
 				<input class="btn btn--green margin-bottom-medium" type="submit" id="sign-up" value="Create">
 				<span class="create-account__negation" id="have-account-text">I have an account</span>
+				<div class="account-area__error-field" id="error-field"></div>
 			</div>
-			<div class="create-account__error-field" id="error-field"></div>
 		`;
 
 		main.innerHTML = createAccountTemplateHTML;
@@ -133,6 +133,8 @@ class HTML {
 
 		const googleBtn = document.querySelector('#continue-with-google');
 		googleBtn.addEventListener("click", core.continueWithGoogle);
+
+		html.cleanErrors();
 	}
 
 	logInTemplate() {
@@ -146,8 +148,8 @@ class HTML {
 				</div>
 				<input class="btn btn--green margin-bottom-medium" type="submit" id="log-in" value="Log In">
 				<span class="log-in__negation" id="dont-have-account-text">I don't have an account</span>
+				<div class="account-area__error-field" id="error-field"></div>
 			</div>
-			<div class="log-in__error-field" id="error-field"></div>
 		`;
 
 		main.innerHTML = logInTemplateHTML;
@@ -157,6 +159,8 @@ class HTML {
 
 		const signInBtn = document.querySelector('#log-in');
 		signInBtn.addEventListener("click", core.signIn);
+
+		html.cleanErrors();
 	}
 
 	userFlats() {
@@ -199,13 +203,20 @@ class HTML {
 		}, 1500);
 	}
 
+	cleanErrors() {
+		const accountArea = document.querySelector('.account-area');
+		accountArea.classList.remove('add-error');
+	}
+
 	displayError(errors) {
 		const errorField = document.querySelector('#error-field');
+		const accountArea = document.querySelector('.account-area');
+
 		errorField.innerHTML = "";
+		accountArea.classList.add('add-error');
 
 		errors.forEach(error => {
 			const log = document.createElement('span');
-			log.classList.add('single-error');
 			log.innerText = error;
 
 			errorField.appendChild(log);

@@ -605,6 +605,21 @@ input[type=range]:focus::-ms-fill-upper {
   .account-area, .account-area__content-box, .account-area__1-of-3, .account-area__2-of-3 {
     display: flex;
     justify-content: center; }
+  .account-area.add-error .account-area__error-field {
+    display: block;
+    opacity: 1; }
+  .account-area__error-field {
+    max-width: 450px;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    background-color: red;
+    border-radius: 16px;
+    color: #fff;
+    margin-top: 1.5rem;
+    text-align: center;
+    display: none;
+    opacity: 0;
+    transition: all .2s ease-in-out; }
   .account-area__content-box {
     max-width: 1350px;
     width: 100%;
@@ -675,10 +690,6 @@ input[type=range]:focus::-ms-fill-upper {
     cursor: pointer;
     text-decoration: underline;
     color: #5f5f5f; }
-  .log-in__error-field {
-    max-width: 450px;
-    text-align: center;
-    padding: 0.5rem 1rem; }
 
 .create-account {
   background-color: #fff;
