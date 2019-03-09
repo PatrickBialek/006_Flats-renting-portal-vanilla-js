@@ -195,8 +195,8 @@ class CORE {
 	}
 
 	getUserFlatsFromDataBase() {
-		const flat = firebase.database().ref("flats/");
-		const userFlatsContainer = document.querySelector("#user-flats-container");
+		const flat = firebase.database().ref("flats/"),
+			userFlatsContainer = document.querySelector("#user-flats-container");
 
 		const key = Object.keys(sessionStorage)[0];
 		console.log(key);
@@ -207,13 +207,15 @@ class CORE {
 		const userEmail = userSession.email;
 		console.log(userSession.email);
 
-		flat.on("child_added", data => {
-			const flatData = data.val();
+		if (userEmail) {
+			flat.on("child_added", data => {
+				const flatData = data.val();
 
-			if (flatData.userEmail === userEmail) {
-				html.singleFlatTemplateOnMyAccountPage(flatData, userFlatsContainer);
-			}
-		});
+				if (flatData.userEmail === userEmail) {
+					html.singleFlatTemplateOnMyAccountPage(flatData, userFlatsContainer);
+				}
+			});
+		}
 	}
 
 	addUserFlatToDataBase(city, address, description, rooms, pricePerMonth, propertyType, deposit, houseShare) {
