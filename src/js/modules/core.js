@@ -3,10 +3,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 
-import {
-	html,
-	core
-} from "../app.js";
+import { html, core } from "../app.js";
 
 // Here is placed logic responsible for account servicing
 class CORE {
@@ -196,18 +193,13 @@ class CORE {
 
 	getUserFlatsFromDataBase() {
 		const flat = firebase.database().ref("flats/"),
-			userFlatsContainer = document.querySelector("#user-flats-container");
+			userFlatsContainer = document.querySelector("#user-flats-container"),
+			key = Object.keys(sessionStorage)[0],
+			userSession = JSON.parse(sessionStorage.getItem(key));
 
-		const key = Object.keys(sessionStorage)[0];
-		console.log(key);
+		if (userSession != null) {
+			const userEmail = userSession.email;
 
-		const userSession = JSON.parse(sessionStorage.getItem(key));
-		console.log(userSession);
-
-		const userEmail = userSession.email;
-		console.log(userSession.email);
-
-		if (userEmail) {
 			flat.on("child_added", data => {
 				const flatData = data.val();
 
@@ -337,57 +329,56 @@ class CORE {
 	}
 
 	filteringFlatsOnMainPage(flats, searchFields) {
-
 		const result = flats
-			.filter((flat) => {
+			.filter(flat => {
 				if (searchFields.city) {
-					return flat.city === searchFields.city
+					return flat.city === searchFields.city;
 				} else {
 					return flat;
 				}
 			})
-			.filter((flat) => {
+			.filter(flat => {
 				if (searchFields.rooms) {
 					return flat.rooms === searchFields.rooms;
 				} else {
 					return flat;
 				}
 			})
-			.filter((flat) => {
+			.filter(flat => {
 				if (searchFields.min) {
 					return flat.pricePerMonth >= searchFields.min;
 				} else {
 					return flat;
 				}
 			})
-			.filter((flat) => {
+			.filter(flat => {
 				if (searchFields.max) {
 					return flat.pricePerMonth <= searchFields.max;
 				} else {
 					return flat;
 				}
 			})
-			.filter((flat) => {
+			.filter(flat => {
 				if (searchFields.propertyType) {
 					return flat.propertyType === searchFields.propertyType;
 				} else {
 					return flat;
 				}
 			})
-			.filter((flat) => {
+			.filter(flat => {
 				if (searchFields.deposit) {
 					return flat.deposit === searchFields.deposit;
 				} else {
 					return flat;
 				}
 			})
-			.filter((flat) => {
+			.filter(flat => {
 				if (searchFields.houseShare) {
 					return flat.houseShare === searchFields.houseShare;
 				} else {
 					return flat;
 				}
-			})
+			});
 
 		if (result.length) {
 			html.flatsFilteringTemplateMainPage(result);
@@ -397,6 +388,4 @@ class CORE {
 	}
 }
 
-export {
-	CORE
-};
+export { CORE };
