@@ -3,7 +3,10 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 
-import { html, core } from "../app.js";
+import {
+	html,
+	core
+} from "../app.js";
 
 // Here is placed logic responsible for account servicing
 class CORE {
@@ -388,4 +391,6 @@ class CORE {
 	}
 }
 
-export { CORE };
+export {
+	CORE
+};
