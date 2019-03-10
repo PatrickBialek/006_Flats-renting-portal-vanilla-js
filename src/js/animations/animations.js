@@ -3,7 +3,9 @@ import {
 } from '../app';
 
 class ANIMATIONS {
+	headerScrollAnimation() {
 
+	}
 }
 
 export {
