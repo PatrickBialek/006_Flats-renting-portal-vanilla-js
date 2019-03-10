@@ -3,21 +3,18 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 
-import {
-	html,
-	core
-} from "../app.js";
+import { html, core } from "../app.js";
 
-// Here is placed logic responsible for account servicing
+// Here is placed logic responsible for account servicing and main page filtering
 class CORE {
 	initializeFirebase() {
 		const config = {
-			apiKey: "AIzaSyBuQqy8ks1NKE2n7p9ArEzIDNnwwapH1i4",
-			authDomain: "rent-a-flat-907b4.firebaseapp.com",
-			databaseURL: "https://rent-a-flat-907b4.firebaseio.com",
-			projectId: "rent-a-flat-907b4",
-			storageBucket: "rent-a-flat-907b4.appspot.com",
-			messagingSenderId: "1045860536910"
+			apiKey: "AIzaSyCfxl3d-HELgOY1fFrajWboqsZ1cPswV48",
+			authDomain: "rent-a-flat-3f002.firebaseapp.com",
+			databaseURL: "https://rent-a-flat-3f002.firebaseio.com",
+			projectId: "rent-a-flat-3f002",
+			storageBucket: "rent-a-flat-3f002.appspot.com",
+			messagingSenderId: "756883896135"
 		};
 
 		firebase.initializeApp(config);
@@ -391,6 +388,4 @@ class CORE {
 	}
 }
 
-export {
-	CORE
-};
+export { CORE };
