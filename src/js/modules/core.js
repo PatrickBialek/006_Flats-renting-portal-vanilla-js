@@ -143,6 +143,9 @@ class CORE {
 			.then(result => {
 				const token = result.credential.accessToken,
 					user = result.user;
+
+				console.log(token);
+				console.log(user);
 			})
 			.catch(error => {
 				const errorCode = error.code,
