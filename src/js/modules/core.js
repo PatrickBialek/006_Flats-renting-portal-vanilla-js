@@ -3,7 +3,10 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 
-import { html, core } from "../app.js";
+import {
+	html,
+	core
+} from "../app.js";
 
 // Here is placed logic responsible for account servicing and main page filtering
 class CORE {
@@ -174,7 +177,7 @@ class CORE {
 		const city = document.querySelector("#add-flat-city").value,
 			address = document.querySelector("#add-flat-address").value,
 			description = document.querySelector("#add-flat-description").value,
-			rooms = document.querySelector("#add-flat-rooms").value,
+			rooms = Number(document.querySelector("#add-flat-rooms").value),
 			price = document.querySelector("#add-flat-price").value,
 			propertyType = document.querySelector("#add-flat-property-type").value,
 			deposit = document.querySelector("#add-flat-deposit").value,
@@ -187,7 +190,7 @@ class CORE {
 
 			setTimeout(() => {
 				html.cleanErrors();
-			}, 3000);
+			}, 5000);
 		}
 	}
 
@@ -240,7 +243,7 @@ class CORE {
 
 		setTimeout(() => {
 			html.cleanSuccess();
-		}, 3000);
+		}, 5000);
 	}
 
 	removeUserFlatFromDataBase(id) {
@@ -388,4 +391,6 @@ class CORE {
 	}
 }
 
-export { CORE };
+export {
+	CORE
+};
