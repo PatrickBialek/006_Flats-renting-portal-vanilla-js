@@ -7,7 +7,7 @@
 	width: 100%;
 	justify-content: space-between;
 	align-items: center;
-	transition: all .35s ease-in-out;
+	transition: background-color .35s ease-in-out;
 
 	@include smallScreen {
 		padding: 2.5rem 1rem;

@@ -373,7 +373,7 @@ input[type=range]:focus::-ms-fill-upper {
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  transition: all .35s ease-in-out; }
+  transition: background-color .35s ease-in-out; }
   @media (max-width: 850px) {
     .header {
       padding: 2.5rem 1rem; } }
