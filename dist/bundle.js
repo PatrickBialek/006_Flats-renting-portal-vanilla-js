@@ -1228,7 +1228,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\n//# sourceURL=webpack:///./src/js/animations/animations.js?");
+eval("const nav = document.querySelector('#header-nav');\n\nif (nav) {\n\tfunction navScrollAnimation(e) {\n\t\tif (window.scrollY > 0) {\n\t\t\tdocument.body.classList.add('active-scroll');\n\t\t} else {\n\t\t\tdocument.body.classList.remove('active-scroll');\n\t\t}\n\t}\n\n\tdocument.addEventListener('scroll', navScrollAnimation);\n}\n\n//# sourceURL=webpack:///./src/js/animations/animations.js?");
 
 /***/ }),
 
