@@ -338,23 +338,31 @@ input[type=range]:focus::-ms-fill-upper {
     outline: none; }
   .sign-up-btn:active {
     box-shadow: inset 0 0 0 32px rgba(0, 0, 0, 0.1); }
+  .sign-up-btn--facebook, .sign-up-btn--google {
+    transition: all .2s ease-in-out;
+    color: #fff;
+    text-decoration: none;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    padding: 8px 16px; }
   .sign-up-btn--facebook {
-    background-color: #4C69BA;
-    background-image: linear-gradient(#4C69BA, #3B55A0);
-    text-shadow: 0 -1px 0 #354C8C; }
-    .sign-up-btn--facebook:before {
-      border-right: #364e92 1px solid;
-      background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png") 6px 6px no-repeat; }
-    .sign-up-btn--facebook:hover, .sign-up-btn--facebook:focus {
-      background-color: #5B7BD5;
-      background-image: linear-gradient(#5B7BD5, #4864B1); }
+    background-color: #2f5b9d;
+    transition: all .2s ease-in-out; }
+    .sign-up-btn--facebook:hover {
+      background-color: #4f79b7;
+      cursor: pointer; }
   .sign-up-btn--google {
-    background: #DD4B39; }
-    .sign-up-btn--google:before {
-      border-right: #BB3F30 1px solid;
-      background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png") 6px 6px no-repeat; }
-    .sign-up-btn--google:hover, .sign-up-btn--google:focus {
-      background: #E74B37; }
+    background-color: #B23121;
+    transition: all .2s ease-in-out;
+    margin-bottom: 1rem; }
+    .sign-up-btn--google:hover {
+      background-color: #D44638;
+      cursor: pointer; }
 
 .header {
   z-index: 3;

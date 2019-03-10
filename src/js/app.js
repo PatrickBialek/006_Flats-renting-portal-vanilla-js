@@ -4,13 +4,9 @@ import {
 import {
 	HTML
 } from './modules/html.js';
-import {
-	ANIMATIONS
-} from './animations/animations';
 
 const html = new HTML(),
 	core = new CORE(),
-	animations = new ANIMATIONS(),
 	main = document.querySelector('#account-area-main'),
 	mainAccountArea = document.querySelector('#account-area-main'),
 	mainPageflatsContainer = document.querySelector("#flats-container");
@@ -30,6 +26,5 @@ if (mainPageflatsContainer) {
 export {
 	main,
 	html,
-	core,
-	animations
+	core
 };
