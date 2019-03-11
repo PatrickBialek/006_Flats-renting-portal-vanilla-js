@@ -289,6 +289,9 @@ class HTML {
 			`;
 
 		flatsContainer.innerHTML += singleFlatTemplateHTML;
+
+		const removeBtn = document.querySelector('#user-flats__remove');
+		removeBtn.addEventListener("click", html.removeSingleFlatOnMyAccountPage);
 	}
 
 	editSingleFlatTemplateOnMyAccountPage() {
