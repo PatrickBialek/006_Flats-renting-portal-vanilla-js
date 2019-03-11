@@ -290,8 +290,8 @@ class HTML {
 
 		flatsContainer.innerHTML += singleFlatTemplateHTML;
 
-		const removeBtn = document.querySelector('#user-flats__remove');
-		removeBtn.addEventListener("click", html.removeSingleFlatOnMyAccountPage);
+		const removeBtns = Array.from(document.querySelectorAll('.user-flats__remove'));
+		removeBtns.forEach(removeBtn => removeBtn.addEventListener('click', html.removeSingleFlatOnMyAccountPage));
 	}
 
 	editSingleFlatTemplateOnMyAccountPage() {
