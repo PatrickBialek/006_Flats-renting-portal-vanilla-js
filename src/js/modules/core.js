@@ -29,19 +29,15 @@ class CORE {
 
 		firebase.auth().onAuthStateChanged(user => {
 			if (user) {
-				const user = firebase.auth().currentUser;
-
-				// console.log(user.displayName);
-				// console.log(user.email);
-
-				const userName = 'Patryk';
+				const user = firebase.auth().currentUser,
+					userName = user.displayName;
 
 				html.userSingedIn();
-				html.userSignInHeader(userName);
 
-				if (user != null) {
-					const email = user.email;
+				if (userName !== null) {
+					html.userSignInHeader(userName);
 				}
+
 			} else {
 				html.logInTemplate();
 			}
@@ -229,7 +225,8 @@ class CORE {
 	addUserFlatToDataBase(city, address, description, rooms, pricePerMonth, propertyType, deposit, houseShare) {
 		const userEmail = (firebase.auth().currentUser.email),
 			pricePerWeek = Number(pricePerMonth) / 4,
-			id = Date.now() + Math.floor(Math.random() * 100);
+			id = Date.now() + Math.floor(Math.random() * 100),
+			db = firebase.database().ref("flats/" + id);
 
 		const flat = {
 			id: id,
@@ -245,8 +242,6 @@ class CORE {
 			userEmail: userEmail,
 			readyToPublish: false
 		};
-
-		const db = firebase.database().ref("flats/" + id);
 
 		db.set(flat);
 		html.resetAddFlatFields();

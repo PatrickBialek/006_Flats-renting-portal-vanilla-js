@@ -253,8 +253,8 @@ class HTML {
 	}
 
 	showUserFlatPrice() {
-		const priceContainer = document.querySelector('#add-flat-chosen-price-container');
-		const price = event.target.value;
+		const priceContainer = document.querySelector('#add-flat-chosen-price-container'),
+			price = event.target.value;
 
 		priceContainer.innerHTML = price;
 	}
@@ -375,8 +375,6 @@ class HTML {
 	flatsFilteringTemplateMainPage(flats) {
 		const flatsContainer = document.querySelector('#flats-container');
 		html.cleanFlatsContainerMainPage(flatsContainer);
-
-		console.log(flats);
 
 		flats.forEach(flat => {
 			html.flatTemplateOnMainPage(flat, flatsContainer);
