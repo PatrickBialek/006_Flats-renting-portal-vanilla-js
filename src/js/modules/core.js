@@ -31,7 +31,13 @@ class CORE {
 			if (user) {
 				const user = firebase.auth().currentUser;
 
+				// console.log(user.displayName);
+				// console.log(user.email);
+
+				const userName = 'Patryk';
+
 				html.userSingedIn();
+				html.userSignInHeader(userName);
 
 				if (user != null) {
 					const email = user.email;
@@ -79,6 +85,7 @@ class CORE {
 
 		const email = document.querySelector("#new-user-mail-adress").value,
 			password = document.querySelector("#new-user-password").value,
+			displayName = document.querySelector("#new-user-name").value,
 			re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
 			isEmailCorrect = re.test(email),
 			errors = [];
@@ -87,6 +94,11 @@ class CORE {
 			firebase
 				.auth()
 				.createUserWithEmailAndPassword(email, password)
+				.then(() => {
+					firebase.auth().currentUser.updateProfile({
+						displayName: displayName
+					})
+				})
 				.catch(error => {
 					const errorCode = error.code,
 						errorMessage = error.message;
@@ -200,12 +212,9 @@ class CORE {
 	getUserFlatsFromDataBase() {
 		const flat = firebase.database().ref("flats/"),
 			userFlatsContainer = document.querySelector("#user-flats-container"),
-			key = Object.keys(sessionStorage)[0],
-			userSession = JSON.parse(sessionStorage.getItem(key));
+			userEmail = (firebase.auth().currentUser.email);
 
-		if (userSession != null) {
-			const userEmail = userSession.email;
-
+		if (userEmail) {
 			flat.on("child_added", data => {
 				const flatData = data.val();
 
@@ -214,12 +223,11 @@ class CORE {
 				}
 			});
 		}
+
 	}
 
 	addUserFlatToDataBase(city, address, description, rooms, pricePerMonth, propertyType, deposit, houseShare) {
-		const key = Object.keys(sessionStorage)[0],
-			userSession = JSON.parse(sessionStorage.getItem(key)),
-			userEmail = userSession.email,
+		const userEmail = (firebase.auth().currentUser.email),
 			pricePerWeek = Number(pricePerMonth) / 4,
 			id = Date.now() + Math.floor(Math.random() * 100);
 

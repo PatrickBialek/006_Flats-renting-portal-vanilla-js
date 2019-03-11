@@ -109,10 +109,13 @@ class HTML {
 					</a>
 				</div>
 				<div class="create-account__row">
-					<input class="create-account__field" type="text" placeholder="Your e-mail..." id="new-user-mail-adress">
+					<input class="create-account__field" type="text" placeholder="Your name... :)" id="new-user-name" required>
 				</div>
 				<div class="create-account__row">
-					<input class="create-account__field" type="password" placeholder="Your password..." id="new-user-password">
+					<input class="create-account__field" type="text" placeholder="Your e-mail..." id="new-user-mail-adress" required>
+				</div>
+				<div class="create-account__row">
+					<input class="create-account__field" type="password" placeholder="Your password..." id="new-user-password" required>
 				</div>
 				<input class="btn btn--green margin-bottom-medium" type="submit" id="sign-up" value="Create">
 				<span class="create-account__negation" id="have-account-text">I have an account</span>
@@ -141,10 +144,10 @@ class HTML {
 		const logInTemplateHTML = `
 			<div class="log-in margin-bottom-medium">
 				<div class="log-in__row">
-					<input class="log-in__field" type="text" placeholder="Your e-mail..." id="user-email">
+					<input class="log-in__field" type="text" placeholder="Your e-mail..." id="user-email" required>
 				</div>
 				<div class="log-in__row">
-					<input class="log-in__field" type="password" placeholder="Your password..." id="user-password">
+					<input class="log-in__field" type="password" placeholder="Your password..." id="user-password" required>
 				</div>
 				<input class="btn btn--green margin-bottom-medium" type="submit" id="log-in" value="Log In">
 				<span class="log-in__negation" id="dont-have-account-text">I don't have an account</span>
@@ -204,14 +207,23 @@ class HTML {
 		}, 1500);
 	}
 
+	userSignInHeader(userName) {
+		const userMenuPosition = document.querySelector('#user-menu-position'),
+			userSignInTemplate = `
+				<a href="my-account.html">Nice to see you ${userName}!</a>
+		`;
+
+		userMenuPosition.innerHTML = userSignInTemplate;
+	}
+
 	cleanErrors() {
 		const accountArea = document.querySelector('.account-area');
 		accountArea.classList.remove('add-error');
 	}
 
 	displayError(errors) {
-		const errorField = document.querySelector('#error-field');
-		const accountArea = document.querySelector('.account-area');
+		const errorField = document.querySelector('#error-field'),
+			accountArea = document.querySelector('.account-area');
 
 		errorField.innerHTML = "";
 		accountArea.classList.add('add-error');
@@ -230,9 +242,9 @@ class HTML {
 	}
 
 	displaySuccess() {
-		const successField = document.querySelector('#success-field');
-		const accountArea = document.querySelector('.account-area');
-		const log = document.createElement('span');
+		const successField = document.querySelector('#success-field'),
+			accountArea = document.querySelector('.account-area'),
+			log = document.createElement('span');
 
 		successField.innerHTML = "";
 		accountArea.classList.add('add-success');
@@ -318,9 +330,9 @@ class HTML {
 	}
 
 	flatNotAdded() {
-		const errorField = document.querySelector('#error-field');
-		const accountArea = document.querySelector('.account-area');
-		const log = document.createElement('span');
+		const errorField = document.querySelector('#error-field'),
+			accountArea = document.querySelector('.account-area'),
+			log = document.createElement('span');
 
 		errorField.innerHTML = "";
 		accountArea.classList.add('add-error');
