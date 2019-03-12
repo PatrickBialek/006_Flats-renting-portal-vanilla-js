@@ -5,9 +5,13 @@
 	background-image: linear-gradient(rgba(42, 157, 143, .85), rgba(42, 157, 143, .8)), url(../images/background-image.jpg);
 	background-position: bottom center;
 	background-size: cover;
-	padding: 10rem 2rem 15rem;
+	padding: 20rem 2rem 25rem;
 	clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 0% 100%);
 	background-color: #e9e9eb;
+
+	@include smallScreen {
+		padding: 10rem 2rem 15rem;
+	}
 
 	@include tinyScreen {
 		padding: 10rem 2rem;
