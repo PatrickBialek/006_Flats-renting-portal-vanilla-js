@@ -263,7 +263,6 @@ class HTML {
 		const singleFlatTemplateHTML = `
 			<div class="user-flats__single-flat-container" id="${flat.id}">
 				<div class="user-flats__user-tools">
-					<button class="btn user-flats__edit">Edit</button>
 					<button class="btn user-flats__remove">Remove</button>
 				</div>
 				<div class="user-flats__single-flat">
@@ -356,7 +355,7 @@ class HTML {
 							</div>
 						</div>
 						<div class="flats__bottom-box">
-							<span class="flats__contact-box flats__contact-box--email">${flat.userEmail}</span>
+							<a class="flats__contact-box" href="mailto:${flat.userEmail}?Subject=I'm interested this flat ${flat.address}" target="_top">${flat.userEmail}</a>
 						</div>
 						<div class="flats__bottom-box">
 						<div>

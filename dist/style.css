@@ -543,7 +543,8 @@ body.active-scroll .header {
     border-radius: 10px;
     margin-top: 1rem;
     max-width: 200px;
-    text-align: center; }
+    text-align: center;
+    text-decoration: none; }
   .flats__price, .flats__title {
     color: #e63946;
     font-weight: bold; }
@@ -831,15 +832,10 @@ body.active-scroll .header {
     display: flex;
     justify-content: flex-start;
     padding: 0rem 1rem 0rem; }
-  .user-flats__edit, .user-flats__remove {
+  .user-flats__remove {
     color: #fff;
     transition: all .3s ease-in-out;
-    border: none; }
-  .user-flats__edit {
-    background-color: #E76F51; }
-    .user-flats__edit:hover {
-      background-color: #cf6348; }
-  .user-flats__remove {
+    border: none;
     margin-left: .75rem;
     background-color: #e63946; }
     .user-flats__remove:hover {
