@@ -544,7 +544,8 @@ body.active-scroll .header {
     margin-top: 1rem;
     max-width: 200px;
     text-align: center;
-    text-decoration: none; }
+    text-decoration: none;
+    cursor: pointer; }
   .flats__price, .flats__title {
     color: #e63946;
     font-weight: bold; }
