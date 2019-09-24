@@ -1,10 +1,6 @@
-import {
-	main,
-	html,
-	core
-} from '../app.js';
+import { main, html, core } from "../app.js";
 
-// Here are placed html templates 
+// Here are placed html templates
 class HTML {
 	addFlatTemplate() {
 		const addFlatTemplateHTML = `
@@ -125,16 +121,16 @@ class HTML {
 
 		main.innerHTML = createAccountTemplateHTML;
 
-		const signInText = document.querySelector('#have-account-text');
+		const signInText = document.querySelector("#have-account-text");
 		signInText.addEventListener("click", html.logInTemplate);
 
-		const signUpBtn = document.querySelector('#sign-up');
+		const signUpBtn = document.querySelector("#sign-up");
 		signUpBtn.addEventListener("click", core.signUp);
 
-		const facebookBtn = document.querySelector('#continue-with-facebook');
+		const facebookBtn = document.querySelector("#continue-with-facebook");
 		facebookBtn.addEventListener("click", core.continueWithFacebook);
 
-		const googleBtn = document.querySelector('#continue-with-google');
+		const googleBtn = document.querySelector("#continue-with-google");
 		googleBtn.addEventListener("click", core.continueWithGoogle);
 
 		html.cleanErrors();
@@ -157,10 +153,10 @@ class HTML {
 
 		main.innerHTML = logInTemplateHTML;
 
-		const signUpText = document.querySelector('#dont-have-account-text');
+		const signUpText = document.querySelector("#dont-have-account-text");
 		signUpText.addEventListener("click", html.createAccountTemplate);
 
-		const signInBtn = document.querySelector('#log-in');
+		const signInBtn = document.querySelector("#log-in");
 		signInBtn.addEventListener("click", core.signIn);
 
 		html.cleanErrors();
@@ -184,17 +180,17 @@ class HTML {
 	}
 
 	userSingedInListeners() {
-		const signOutBtn = document.querySelector('#sign-out-user');
+		const signOutBtn = document.querySelector("#sign-out-user");
 		signOutBtn.addEventListener("click", core.signOut);
 
-		const priceRange = document.querySelector('#add-flat-price');
-		priceRange.addEventListener('input', html.showUserFlatPrice);
+		const priceRange = document.querySelector("#add-flat-price");
+		priceRange.addEventListener("input", html.showUserFlatPrice);
 
-		const addFlatBtn = document.querySelector('#add-flat');
-		addFlatBtn.addEventListener('click', core.validateUserFlatForm);
+		const addFlatBtn = document.querySelector("#add-flat");
+		addFlatBtn.addEventListener("click", core.validateUserFlatForm);
 
-		const removeFlatBtns = Array.from(document.querySelectorAll('.user-flats__remove'));
-		removeFlatBtns.forEach(removeFlatBtn => removeFlatBtn.addEventListener('click', html.removeSingleFlatOnMyAccountPage));
+		const removeFlatBtns = Array.from(document.querySelectorAll(".user-flats__remove"));
+		removeFlatBtns.forEach(removeFlatBtn => removeFlatBtn.addEventListener("click", html.removeSingleFlatOnMyAccountPage));
 	}
 
 	userSingedIn() {
@@ -208,7 +204,7 @@ class HTML {
 	}
 
 	userSignInHeader(userName) {
-		const userMenuPosition = document.querySelector('#user-menu-position'),
+		const userMenuPosition = document.querySelector("#user-menu-position"),
 			userSignInTemplate = `
 				<a href="my-account.html">Nice to see you ${userName}!</a>
 		`;
@@ -217,43 +213,43 @@ class HTML {
 	}
 
 	cleanErrors() {
-		const accountArea = document.querySelector('.account-area');
-		accountArea.classList.remove('add-error');
+		const accountArea = document.querySelector(".account-area");
+		accountArea.classList.remove("add-error");
 	}
 
 	displayError(errors) {
-		const errorField = document.querySelector('#error-field'),
-			accountArea = document.querySelector('.account-area');
+		const errorField = document.querySelector("#error-field"),
+			accountArea = document.querySelector(".account-area");
 
 		errorField.innerHTML = "";
-		accountArea.classList.add('add-error');
+		accountArea.classList.add("add-error");
 
 		errors.forEach(error => {
-			const log = document.createElement('span');
+			const log = document.createElement("span");
 			log.innerText = error;
 
 			errorField.appendChild(log);
-		})
+		});
 	}
 
 	cleanSuccess() {
-		const accountArea = document.querySelector('.account-area');
-		accountArea.classList.remove('add-success');
+		const accountArea = document.querySelector(".account-area");
+		accountArea.classList.remove("add-success");
 	}
 
 	displaySuccess() {
-		const successField = document.querySelector('#success-field'),
-			accountArea = document.querySelector('.account-area'),
-			log = document.createElement('span');
+		const successField = document.querySelector("#success-field"),
+			accountArea = document.querySelector(".account-area"),
+			log = document.createElement("span");
 
 		successField.innerHTML = "";
-		accountArea.classList.add('add-success');
-		log.innerHTML = "Your flat has been added successfully. Now is waiting for acceptance from administration and then will be published."
+		accountArea.classList.add("add-success");
+		log.innerHTML = "Your flat has been added successfully. Now is waiting for acceptance from administration and then will be published.";
 		successField.appendChild(log);
 	}
 
 	showUserFlatPrice() {
-		const priceContainer = document.querySelector('#add-flat-chosen-price-container'),
+		const priceContainer = document.querySelector("#add-flat-chosen-price-container"),
 			price = event.target.value;
 
 		priceContainer.innerHTML = price;
@@ -289,19 +285,17 @@ class HTML {
 
 		flatsContainer.innerHTML += singleFlatTemplateHTML;
 
-		const removeBtns = Array.from(document.querySelectorAll('.user-flats__remove'));
-		removeBtns.forEach(removeBtn => removeBtn.addEventListener('click', html.removeSingleFlatOnMyAccountPage));
+		const removeBtns = Array.from(document.querySelectorAll(".user-flats__remove"));
+		removeBtns.forEach(removeBtn => removeBtn.addEventListener("click", html.removeSingleFlatOnMyAccountPage));
 	}
 
-	editSingleFlatTemplateOnMyAccountPage() {
-
-	}
+	editSingleFlatTemplateOnMyAccountPage() {}
 
 	removeSingleFlatOnMyAccountPage(e) {
 		const r = confirm("Are you sure?");
 
 		if (r) {
-			const flatsContainer = document.querySelector('#user-flats-container'),
+			const flatsContainer = document.querySelector("#user-flats-container"),
 				flatToolsContainer = e.target.parentElement,
 				flatContainer = flatToolsContainer.parentElement,
 				id = flatContainer.id;
@@ -332,12 +326,12 @@ class HTML {
 	}
 
 	flatNotAdded() {
-		const errorField = document.querySelector('#error-field'),
-			accountArea = document.querySelector('.account-area'),
-			log = document.createElement('span');
+		const errorField = document.querySelector("#error-field"),
+			accountArea = document.querySelector(".account-area"),
+			log = document.createElement("span");
 
 		errorField.innerHTML = "";
-		accountArea.classList.add('add-error');
+		accountArea.classList.add("add-error");
 		log.innerText = "Yoy have to fill all fields in from.";
 		errorField.appendChild(log);
 	}
@@ -375,7 +369,7 @@ class HTML {
 	}
 
 	flatsFilteringTemplateMainPage(flats) {
-		const flatsContainer = document.querySelector('#flats-container');
+		const flatsContainer = document.querySelector("#flats-container");
 		html.cleanFlatsContainerMainPage(flatsContainer);
 
 		flats.forEach(flat => {
@@ -384,7 +378,7 @@ class HTML {
 	}
 
 	noResultTemplateMainPage() {
-		const flatsContainer = document.querySelector('#flats-container');
+		const flatsContainer = document.querySelector("#flats-container");
 
 		const noResultHTML = `
 			<div class="no-result">
@@ -397,6 +391,4 @@ class HTML {
 	}
 }
 
-export {
-	HTML
-};
+export { HTML };
