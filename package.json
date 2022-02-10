@@ -10,7 +10,7 @@
 	"author": "Patryk Białek",
 	"license": "ISC",
 	"devDependencies": {
-		"node-sass": "^4.11.0",
+		"node-sass": "^7.0.0",
 		"webpack": "^4.29.5",
 		"webpack-cli": "^3.2.3"
 	},
